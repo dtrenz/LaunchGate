@@ -21,5 +21,10 @@
     "LaunchGate": [
       "Pod/Assets/*.png"
     ]
+  },
+  "dependencies": {
+    "Alamofire": [
+      "~> 3.1"
+    ]
   }
 }
