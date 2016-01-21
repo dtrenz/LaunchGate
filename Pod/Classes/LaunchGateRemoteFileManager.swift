@@ -19,6 +19,7 @@ class LaunchGateRemoteFileManager {
     self.remoteFileURI = remoteFileURI
   }
   
+<<<<<<< HEAD
   func fetchRemoteFile(callback: (AnyObject?) -> Void) {
     if let request = createRemoteFileRequest(remoteFileURI) {
       performRemoteFileRequest(request, responseHandler: callback)
@@ -35,4 +36,6 @@ class LaunchGateRemoteFileManager {
     }
   }
   
+=======
+>>>>>>> develop
 }

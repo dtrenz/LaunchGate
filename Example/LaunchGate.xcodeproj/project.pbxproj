@@ -369,6 +369,7 @@
 			files = (
 				C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */,
 				C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */,
+				C502C4D61C502B0D00C143F2 /* LaunchGateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

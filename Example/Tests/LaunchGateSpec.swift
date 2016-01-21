@@ -3,6 +3,7 @@ import Nimble
 
 @testable import LaunchGate
 
+<<<<<<< HEAD
 
 class LaunchGateSpec: QuickSpec {
   override func spec() {
@@ -39,5 +40,20 @@ class LaunchGateSpec: QuickSpec {
       
     }
     
+=======
+class LaunchGateSpec: QuickSpec {
+  override func spec() {
+    describe("the update URI") {
+      
+      it("is configurable") {
+        let testURI = "https://www.launchgate.com/update.json"
+        
+        let launchGate = LaunchGate(uri: testURI)
+        
+        expect(launchGate.uri) == "https://www.launchgate.com/update.json"
+      }
+      
+    }
+>>>>>>> develop
   }
 }

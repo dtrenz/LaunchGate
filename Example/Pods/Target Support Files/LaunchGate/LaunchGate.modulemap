@@ -1,6 +1,0 @@
-framework module LaunchGate {
-  umbrella header "LaunchGate-umbrella.h"
-
-  export *
-  module * { export * }
-}
