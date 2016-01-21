@@ -20,4 +20,5 @@ before_install:
 
 script:
 - set -o pipefail && xcodebuild test -workspace Example/LaunchGate.xcworkspace -scheme LaunchGate-Example -destination 'platform=iOS Simulator,name=iPhone 6s' ONLY_ACTIVE_ARCH=NO | xcpretty
+- swiftlint
 - pod lib lint
