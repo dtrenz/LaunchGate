@@ -1,40 +1,33 @@
-#
-# Be sure to run `pod lib lint LaunchGate.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "LaunchGate"
   s.version          = "0.1.0"
-  s.summary          = "A short description of LaunchGate."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+  s.summary          = <<-SUMMARY
+                       LaunchGate makes it easy to let users know if there is a newer version of your app available.
+                       SUMMARY
   s.description      = <<-DESC
+                       LaunchGate makes it easy to let users know if there is a
+                       newer version of your app available.
+
+                       You can also block access to the app for older versions,
+                       which is useful in the event of a severe bug or security
+                       issue that requires users to update the app.
+
+                       Additionally, you can use LaunchGate to display a remotely
+                       configured message to users at launch which can also be
+                       used to temporarily block access to the app (i.e. during
+                       back-end maintenance).
                        DESC
-
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/LaunchGate"
+  s.homepage         = "https://github.com/dtrenz/LaunchGate"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "git" => "dtrenz@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/LaunchGate.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.platform     = :ios, '8.0'
+  s.license          = 'Apache 2.0'
+  s.author           = { "Dan Trenz" => "dtrenz@gmail.com" }
+  s.source           = { :git => "https://github.com/dtrenz/LaunchGate.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/dtrenz'
+  s.platform     = :ios, '8.3'
   s.requires_arc = true
-
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
     'LaunchGate' => ['Pod/Assets/*.png']
   }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'Alamofire', '~> 3.1'
 end
