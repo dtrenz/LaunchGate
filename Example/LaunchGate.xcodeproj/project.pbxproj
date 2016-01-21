@@ -11,8 +11,9 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		75B891280FD3EFB985E9EFA3 /* Pods_LaunchGate_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0E292FCCA1772A50151C8D /* Pods_LaunchGate_Example.framework */; };
+		C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */; };
+		C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */; };
 		E7CE604F76B9C42F792E5E94 /* Pods_LaunchGate_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC7DAEDDBA99543D20A3675 /* Pods_LaunchGate_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,11 +40,12 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* LaunchGate_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchGate_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6C0E292FCCA1772A50151C8D /* Pods_LaunchGate_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LaunchGate_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8416CB69CF3B6969E8C806BF /* Pods-LaunchGate_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGate_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGate_Example/Pods-LaunchGate_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8D0B326D9E50B3BA444BAAC2 /* Pods-LaunchGate_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGate_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGate_Tests/Pods-LaunchGate_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AF8F034C35757C2376E9F80B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateSpec.swift; sourceTree = "<group>"; };
+		C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateRemoteFileManagerSpec.swift; sourceTree = "<group>"; };
 		C8BA1E0B62CA158F1979DE96 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,8 +134,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */,
+				C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -364,7 +367,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */,
+				C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,10 +515,7 @@
 			baseConfigurationReference = 11515A80FCD35A3A64E3020F /* Pods-LaunchGate_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -532,10 +533,7 @@
 			baseConfigurationReference = 8D0B326D9E50B3BA444BAAC2 /* Pods-LaunchGate_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
