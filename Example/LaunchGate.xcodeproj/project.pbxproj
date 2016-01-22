@@ -134,9 +134,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-				C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */,
 				C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */,
+				C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -369,7 +369,6 @@
 			files = (
 				C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */,
 				C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */,
-				C502C4D61C502B0D00C143F2 /* LaunchGateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
