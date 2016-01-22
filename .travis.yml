@@ -17,6 +17,7 @@ notifications:
 
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
+- pod install --project-directory=Example
 
 script:
 - set -o pipefail && xcodebuild test -workspace Example/LaunchGate.xcworkspace -scheme LaunchGate-Example -destination 'platform=iOS Simulator,name=iPhone 6s' ONLY_ACTIVE_ARCH=NO | xcpretty
