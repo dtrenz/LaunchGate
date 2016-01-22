@@ -14,7 +14,7 @@ public class LaunchGate {
   var remoteFileManager: LaunchGateRemoteFileManager
 
   public init(uri: String) {
-    remoteFileManager = LaunchGateRemoteFileManager(remoteFileURI: uri)
+    remoteFileManager = LaunchGateRemoteFileManager(remoteFileURIString: uri)
   }
 
   public func performCheck() {

@@ -1,7 +1,5 @@
 PODS:
-  - Alamofire (3.1.5)
-  - LaunchGate (0.1.0):
-    - Alamofire (~> 3.1)
+  - LaunchGate (0.1.0)
   - Nimble (3.0.0)
   - Quick (0.8.0)
 
@@ -15,8 +13,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
-  LaunchGate: 9207b27d2402f9de79e50d527d85fd638b6ea355
+  LaunchGate: 49a8df7a656a9bd3ee2a4ff772b4fcd798f13a51
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
 

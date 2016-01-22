@@ -12,7 +12,7 @@ class LaunchGateSpec: QuickSpec {
       it("the URI is stored in the remote file manager") {
         let launchGate = LaunchGate(uri: exampleURI)
 
-        expect(launchGate.remoteFileManager.remoteFileURI.URLString) == exampleURI
+        expect(launchGate.remoteFileManager.remoteFileURI!.absoluteString) == exampleURI
       }
     }
 
@@ -28,12 +28,12 @@ class LaunchGateSpec: QuickSpec {
 
       it("calls LaunchGateRemoteFileManager#fetchRemoteFile") {
         let launchGate = LaunchGate(uri: exampleURI)
-        let mockRemoteFileManager = MockLaunchGateRemoteFileManager(remoteFileURI: exampleURI)
+        let mockRemoteFileManager = MockLaunchGateRemoteFileManager(remoteFileURIString: exampleURI)
         launchGate.remoteFileManager = mockRemoteFileManager
 
         launchGate.performCheck()
 
-        expect(mockRemoteFileManager.remoteFileURI.URLString) == exampleURI
+        expect(mockRemoteFileManager.remoteFileURI!.absoluteString) == exampleURI
       }
 
     }

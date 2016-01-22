@@ -8,30 +8,41 @@
 
 import Foundation
 
-import Alamofire
-
 
 class LaunchGateRemoteFileManager {
 
-  let remoteFileURI: URLStringConvertible
+  let remoteFileURI: NSURL?
 
-  init(remoteFileURI: URLStringConvertible) {
-    self.remoteFileURI = remoteFileURI
+  init(remoteFileURIString: String) {
+    if let uri = NSURL(string: remoteFileURIString) {
+      remoteFileURI = uri
+    } else {
+      remoteFileURI = nil
+    }
   }
 
   func fetchRemoteFile(callback: (AnyObject?) -> Void) {
-    if let request = createRemoteFileRequest(remoteFileURI) {
+    if let uri = remoteFileURI,
+           request = createRemoteFileRequest(uri) {
       performRemoteFileRequest(request, responseHandler: callback)
     }
   }
 
-  func createRemoteFileRequest(uri: URLStringConvertible) -> Request? {
-    return Alamofire.request(.GET, uri)
+  func createRemoteFileRequest(uri: NSURL) -> NSURLRequest? {
+    guard let uri = remoteFileURI else {
+      return nil
+    }
+    
+    return NSURLRequest(URL: uri)
   }
 
-  func performRemoteFileRequest(request: Request, responseHandler: (response: AnyObject?) -> Void) {
-    request.responseJSON { response in
-      responseHandler(response: response.result.value)
+  func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: AnyObject?) -> Void) {
+    NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+      if let error = error {
+        print("LaunchGate — Error: \(error.localizedDescription)")
+      }
+      
+      responseHandler(data: data)
     }
   }
 

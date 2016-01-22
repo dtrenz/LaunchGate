@@ -29,5 +29,4 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'LaunchGate' => ['Pod/Assets/*.png']
   }
-  s.dependency 'Alamofire', '~> 3.1'
 end

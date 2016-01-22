@@ -1,8 +1,6 @@
 import Quick
 import Nimble
 
-import Alamofire
-
 
 @testable import LaunchGate
 
@@ -14,9 +12,9 @@ class LaunchGateRemoteFileManagerSpec: QuickSpec {
     describe("#init") {
 
       it("the URI is stored in the remote file manager") {
-        let remoteFileManager = LaunchGateRemoteFileManager(remoteFileURI: exampleURI)
+        let remoteFileManager = LaunchGateRemoteFileManager(remoteFileURIString: exampleURI)
 
-        expect(remoteFileManager.remoteFileURI.URLString) == exampleURI
+        expect(remoteFileManager.remoteFileURI!.absoluteString) == exampleURI
       }
 
     }
@@ -27,22 +25,20 @@ class LaunchGateRemoteFileManagerSpec: QuickSpec {
         var createRemoteFileRequestWasCalledWithRemoteFileURI = false
         var performRemoteFileRequestWasCalled = false
 
-        override func createRemoteFileRequest(uri: URLStringConvertible) -> Request? {
-          if uri.URLString == "https://www.launchgate.com/update.json" {
+        override func createRemoteFileRequest(uri: NSURL) -> NSURLRequest? {
+          if uri.absoluteString == "https://www.launchgate.com/update.json" {
             createRemoteFileRequestWasCalledWithRemoteFileURI = true
           }
 
           return nil
         }
 
-        override func performRemoteFileRequest(request: Request, responseHandler: (response: AnyObject?) -> Void) {
-          request.responseJSON { response in
-            //
-          }
+        override func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: AnyObject?) -> Void) {
+          // no-op
         }
       }
 
-      let remoteFileManager = MockLaunchGateRemoteFileManager(remoteFileURI: exampleURI)
+      let remoteFileManager = MockLaunchGateRemoteFileManager(remoteFileURIString: exampleURI)
 
       beforeEach {
         remoteFileManager.fetchRemoteFile { _ in }
