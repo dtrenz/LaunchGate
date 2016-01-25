@@ -13,8 +13,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LaunchGate: aebc2dd522a9905730bccbaeb74751ac7c712c18
+  LaunchGate: 49a8df7a656a9bd3ee2a4ff772b4fcd798f13a51
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.38.2

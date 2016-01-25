@@ -7,8 +7,6 @@
   # Find all the available rules by running:
   # swiftlint rules
 included: # paths to include during linting. `--path` is ignored if present.
-  - Example/LaunchGate
-  - Example/Tests
   - Pod/Classes
 # parameterized rules can be customized from this configuration file
 line_length: 120
