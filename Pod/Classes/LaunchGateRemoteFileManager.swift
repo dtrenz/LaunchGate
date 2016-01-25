@@ -32,7 +32,7 @@ class LaunchGateRemoteFileManager {
     guard let uri = remoteFileURI else {
       return nil
     }
-    
+
     return NSURLRequest(URL: uri)
   }
 
@@ -41,7 +41,7 @@ class LaunchGateRemoteFileManager {
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
-      
+
       responseHandler(data: data)
     }
   }

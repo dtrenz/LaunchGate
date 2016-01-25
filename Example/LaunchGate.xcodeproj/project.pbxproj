@@ -172,6 +172,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				7D28FE3643F20BB93C1B6956 /* Embed Pods Frameworks */,
 				8AAFD8059D64AC3E265E0C2C /* Copy Pods Resources */,
+				C5ECAC7B1C519EAE0028FBC8 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -336,6 +337,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LaunchGate_Example/Pods-LaunchGate_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C5ECAC7B1C519EAE0028FBC8 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  cd .. && swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		E15E39FB26F47C3FFC8C6DFB /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
