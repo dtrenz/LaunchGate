@@ -14,6 +14,15 @@
 		75B891280FD3EFB985E9EFA3 /* Pods_LaunchGate_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0E292FCCA1772A50151C8D /* Pods_LaunchGate_Example.framework */; };
 		C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */; };
 		C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */; };
+		C5CFE2DF1C62949B0047E106 /* LaunchGateConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CFE2DD1C6293050047E106 /* LaunchGateConfigurationSpec.swift */; };
+		C5CFE2E21C62951C0047E106 /* LaunchGateSpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CFE2E01C6294FD0047E106 /* LaunchGateSpecHelper.swift */; };
+		C5CFE2E71C62B2350047E106 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2E61C62B2350047E106 /* config.json */; };
+		C5CFE2E91C63D0D00047E106 /* config-malformed-ios.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2E81C63D0D00047E106 /* config-malformed-ios.json */; };
+		C5CFE2EB1C63D15A0047E106 /* config-malformed-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2EA1C63D15A0047E106 /* config-malformed-empty.json */; };
+		C5CFE2ED1C63D1670047E106 /* config-malformed-alert.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2EC1C63D1670047E106 /* config-malformed-alert.json */; };
+		C5CFE2EF1C63D17E0047E106 /* config-malformed-optional.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2EE1C63D17E0047E106 /* config-malformed-optional.json */; };
+		C5CFE2F11C63D18B0047E106 /* config-malformed-required.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2F01C63D18B0047E106 /* config-malformed-required.json */; };
+		C5CFE2F71C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CFE2F61C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift */; };
 		E7CE604F76B9C42F792E5E94 /* Pods_LaunchGate_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC7DAEDDBA99543D20A3675 /* Pods_LaunchGate_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +55,15 @@
 		AF8F034C35757C2376E9F80B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateSpec.swift; sourceTree = "<group>"; };
 		C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateRemoteFileManagerSpec.swift; sourceTree = "<group>"; };
+		C5CFE2DD1C6293050047E106 /* LaunchGateConfigurationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateConfigurationSpec.swift; sourceTree = "<group>"; };
+		C5CFE2E01C6294FD0047E106 /* LaunchGateSpecHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateSpecHelper.swift; sourceTree = "<group>"; };
+		C5CFE2E61C62B2350047E106 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = config.json; path = Fixtures/config.json; sourceTree = "<group>"; };
+		C5CFE2E81C63D0D00047E106 /* config-malformed-ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-ios.json"; path = "Fixtures/config-malformed-ios.json"; sourceTree = "<group>"; };
+		C5CFE2EA1C63D15A0047E106 /* config-malformed-empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-empty.json"; path = "Fixtures/config-malformed-empty.json"; sourceTree = "<group>"; };
+		C5CFE2EC1C63D1670047E106 /* config-malformed-alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-alert.json"; path = "Fixtures/config-malformed-alert.json"; sourceTree = "<group>"; };
+		C5CFE2EE1C63D17E0047E106 /* config-malformed-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-optional.json"; path = "Fixtures/config-malformed-optional.json"; sourceTree = "<group>"; };
+		C5CFE2F01C63D18B0047E106 /* config-malformed-required.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-required.json"; path = "Fixtures/config-malformed-required.json"; sourceTree = "<group>"; };
+		C5CFE2F61C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateDefaultParserSpec.swift; sourceTree = "<group>"; };
 		C8BA1E0B62CA158F1979DE96 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +152,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C5CFE2DD1C6293050047E106 /* LaunchGateConfigurationSpec.swift */,
+				C5CFE2F61C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift */,
 				C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */,
 				C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
@@ -144,7 +164,9 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C5CFE2E31C62AC430047E106 /* Fixtures */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
+				C5CFE2E01C6294FD0047E106 /* LaunchGateSpecHelper.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -157,6 +179,19 @@
 				C8BA1E0B62CA158F1979DE96 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		C5CFE2E31C62AC430047E106 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				C5CFE2E61C62B2350047E106 /* config.json */,
+				C5CFE2E81C63D0D00047E106 /* config-malformed-ios.json */,
+				C5CFE2EA1C63D15A0047E106 /* config-malformed-empty.json */,
+				C5CFE2EC1C63D1670047E106 /* config-malformed-alert.json */,
+				C5CFE2EE1C63D17E0047E106 /* config-malformed-optional.json */,
+				C5CFE2F01C63D18B0047E106 /* config-malformed-required.json */,
+			);
+			name = Fixtures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +292,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CFE2EB1C63D15A0047E106 /* config-malformed-empty.json in Resources */,
+				C5CFE2EF1C63D17E0047E106 /* config-malformed-optional.json in Resources */,
+				C5CFE2E71C62B2350047E106 /* config.json in Resources */,
+				C5CFE2ED1C63D1670047E106 /* config-malformed-alert.json in Resources */,
+				C5CFE2F11C63D18B0047E106 /* config-malformed-required.json in Resources */,
+				C5CFE2E91C63D0D00047E106 /* config-malformed-ios.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +423,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CFE2E21C62951C0047E106 /* LaunchGateSpecHelper.swift in Sources */,
+				C5CFE2DF1C62949B0047E106 /* LaunchGateConfigurationSpec.swift in Sources */,
 				C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */,
+				C5CFE2F71C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift in Sources */,
 				C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
