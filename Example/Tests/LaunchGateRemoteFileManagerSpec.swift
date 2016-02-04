@@ -33,7 +33,7 @@ class LaunchGateRemoteFileManagerSpec: QuickSpec {
           return nil
         }
 
-        override func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: AnyObject?) -> Void) {
+        override func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: NSData) -> Void) {
           // no-op
         }
       }

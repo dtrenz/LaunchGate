@@ -9,11 +9,13 @@ class LaunchGateSpec: QuickSpec {
     let exampleURI = "https://www.example.com/example.json"
 
     describe("#init") {
+      
       it("the URI is stored in the remote file manager") {
         let launchGate = LaunchGate(uri: exampleURI)
 
         expect(launchGate.remoteFileManager.remoteFileURI!.absoluteString) == exampleURI
       }
+      
     }
 
     describe("#performCheck") {
@@ -21,7 +23,7 @@ class LaunchGateSpec: QuickSpec {
       class MockLaunchGateRemoteFileManager : LaunchGateRemoteFileManager {
         var fetchRemoteFileWasCalled = false
 
-        override func fetchRemoteFile(callback: (AnyObject?) -> Void) {
+        override func fetchRemoteFile(callback: (NSData) -> Void) {
           fetchRemoteFileWasCalled = true
         }
       }
