@@ -21,9 +21,8 @@ class LaunchGateRemoteFileManager {
     }
   }
 
-  func fetchRemoteFile(callback: (AnyObject?) -> Void) {
-    if let uri = remoteFileURI,
-           request = createRemoteFileRequest(uri) {
+  func fetchRemoteFile(callback: (NSData) -> Void) {
+    if let uri = remoteFileURI, request = createRemoteFileRequest(uri) {
       performRemoteFileRequest(request, responseHandler: callback)
     }
   }
@@ -36,14 +35,21 @@ class LaunchGateRemoteFileManager {
     return NSURLRequest(URL: uri)
   }
 
-  func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: AnyObject?) -> Void) {
-    NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+  func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: NSData) -> Void) {
+    let session = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
 
+      guard let data = data else {
+        print("LaunchGate — Error: Remote configuration file response was empty.")
+        return
+      }
+
       responseHandler(data: data)
     }
+
+    session.resume()
   }
 
 }
