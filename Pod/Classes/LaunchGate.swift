@@ -25,12 +25,26 @@ public class LaunchGate {
     remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
       if let config = self.parser.parse(jsonData) {
         print(config)
+        
+        if let appVersion = LaunchGate.currentAppVersion() {
+          if appVersion < config.requiredUpdate.version {
+            print("required update found!")
+          } else if appVersion < config.optionalUpdate.version {
+            print("optional update found!")
+          } else if config.alert.message.isEmpty == false {
+            print("alert found!")
+          }
+        }
       }
     }
   }
 
   public func setParser<T: LaunchGateParser>(parser: T) {
     self.parser = parser
+  }
+  
+  private static func currentAppVersion() -> String? {
+    return NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
   }
 
 }
