@@ -24,7 +24,6 @@ public struct LaunchGateUpdateConfiguration {
   let message: String
 
   init(version: String, message: String) {
-    // maybe a string version type?
     self.version = version
     self.message = message
   }
