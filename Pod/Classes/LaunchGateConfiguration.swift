@@ -31,20 +31,8 @@ public struct LaunchGateUpdateConfiguration {
 
 public struct LaunchGateConfiguration {
 
-  let alert: LaunchGateAlertConfiguration
-  let optionalUpdate: LaunchGateUpdateConfiguration
-  let requiredUpdate: LaunchGateUpdateConfiguration
-
-  public init(
-      alert: LaunchGateAlertConfiguration,
-      optionalUpdate: LaunchGateUpdateConfiguration,
-      requiredUpdate: LaunchGateUpdateConfiguration
-    ) {
-
-    self.alert = alert
-    self.optionalUpdate = optionalUpdate
-    self.requiredUpdate = requiredUpdate
-
-  }
+  var alert: LaunchGateAlertConfiguration? = nil
+  var optionalUpdate: LaunchGateUpdateConfiguration? = nil
+  var requiredUpdate: LaunchGateUpdateConfiguration? = nil
 
 }
