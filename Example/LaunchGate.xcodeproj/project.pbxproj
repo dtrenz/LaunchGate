@@ -22,7 +22,6 @@
 		C5CFE2EF1C63D17E0047E106 /* config-malformed-optional.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2EE1C63D17E0047E106 /* config-malformed-optional.json */; };
 		C5CFE2F11C63D18B0047E106 /* config-malformed-required.json in Resources */ = {isa = PBXBuildFile; fileRef = C5CFE2F01C63D18B0047E106 /* config-malformed-required.json */; };
 		C5CFE2F71C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CFE2F61C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift */; };
-		C5CFE2FB1C6412B50047E106 /* LaunchGateVersionCheckerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CFE2FA1C6412B50047E106 /* LaunchGateVersionCheckerSpec.swift */; };
 		E7CE604F76B9C42F792E5E94 /* Pods_LaunchGate_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC7DAEDDBA99543D20A3675 /* Pods_LaunchGate_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +63,6 @@
 		C5CFE2EE1C63D17E0047E106 /* config-malformed-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-optional.json"; path = "Fixtures/config-malformed-optional.json"; sourceTree = "<group>"; };
 		C5CFE2F01C63D18B0047E106 /* config-malformed-required.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-required.json"; path = "Fixtures/config-malformed-required.json"; sourceTree = "<group>"; };
 		C5CFE2F61C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateDefaultParserSpec.swift; sourceTree = "<group>"; };
-		C5CFE2FA1C6412B50047E106 /* LaunchGateVersionCheckerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateVersionCheckerSpec.swift; sourceTree = "<group>"; };
 		C8BA1E0B62CA158F1979DE96 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,7 +156,6 @@
 				C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */,
 				C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				C5CFE2FA1C6412B50047E106 /* LaunchGateVersionCheckerSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -418,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				C5CFE2FB1C6412B50047E106 /* LaunchGateVersionCheckerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
