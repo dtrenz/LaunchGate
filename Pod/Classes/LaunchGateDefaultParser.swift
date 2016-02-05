@@ -38,21 +38,9 @@ class LaunchGateDefaultParser: LaunchGateParser {
 
       guard let config = json["ios"] as? JSON else { throw Error.UnableToParseConfigurationObject }
 
-      var alert: LaunchGateAlertConfiguration?
-      var optionalUpdate: LaunchGateUpdateConfiguration?
-      var requiredUpdate: LaunchGateUpdateConfiguration?
-
-      if let alertJSON = config["alert"] as? JSON {
-        alert = try LaunchGateDefaultParser.parseAlert(alertJSON)
-      }
-
-      if let optionalUpdateJSON = config["optionalUpdate"] as? JSON {
-        optionalUpdate = try LaunchGateDefaultParser.parseOptionalUpdate(optionalUpdateJSON)
-      }
-
-      if let optionalUpdateJSON = config["requiredUpdate"] as? JSON {
-        requiredUpdate = try LaunchGateDefaultParser.parseRequiredUpdate(optionalUpdateJSON)
-      }
+      let alert = try LaunchGateDefaultParser.parseAlert(config)
+      let optionalUpdate = try LaunchGateDefaultParser.parseOptionalUpdate(config)
+      let requiredUpdate = try LaunchGateDefaultParser.parseRequiredUpdate(config)
 
       return LaunchGateConfiguration(alert: alert, optionalUpdate: optionalUpdate, requiredUpdate: requiredUpdate)
     } catch let error as LaunchGateDefaultParser.Error {
@@ -69,22 +57,25 @@ class LaunchGateDefaultParser: LaunchGateParser {
   }
 
   private static func parseAlert(json: JSON) throws -> LaunchGateAlertConfiguration {
-    guard let message = json["message"] as? String else { throw Error.UnableToParseAlert }
-    guard let blocking = json["blocking"] as? Bool else { throw Error.UnableToParseAlert }
+    guard let alertObject = json["alert"] as? JSON else { throw Error.UnableToParseAlert }
+    guard let message = alertObject["message"] as? String else { throw Error.UnableToParseAlert }
+    guard let blocking = alertObject["blocking"] as? Bool else { throw Error.UnableToParseAlert }
 
     return LaunchGateAlertConfiguration(message: message, blocking: blocking)
   }
 
   private static func parseOptionalUpdate(json: JSON) throws -> LaunchGateUpdateConfiguration {
-    guard let version = json["optionalVersion"] as? String else { throw Error.UnableToParseOptionalUpdate }
-    guard let message = json["message"] as? String else { throw Error.UnableToParseOptionalUpdate }
+    guard let updateObject = json["optionalUpdate"] as? JSON else { throw Error.UnableToParseOptionalUpdate }
+    guard let version = updateObject["optionalVersion"] as? String else { throw Error.UnableToParseOptionalUpdate }
+    guard let message = updateObject["message"] as? String else { throw Error.UnableToParseOptionalUpdate }
 
     return LaunchGateUpdateConfiguration(version: version, message: message)
   }
 
   private static func parseRequiredUpdate(json: JSON) throws -> LaunchGateUpdateConfiguration {
-    guard let version = json["minimumVersion"] as? String else { throw Error.UnableToParseRequiredUpdate }
-    guard let message = json["message"] as? String else { throw Error.UnableToParseRequiredUpdate }
+    guard let updateObject = json["requiredUpdate"] as? JSON else { throw Error.UnableToParseRequiredUpdate }
+    guard let version = updateObject["minimumVersion"] as? String else { throw Error.UnableToParseRequiredUpdate }
+    guard let message = updateObject["message"] as? String else { throw Error.UnableToParseRequiredUpdate }
 
     return LaunchGateUpdateConfiguration(version: version, message: message)
   }
