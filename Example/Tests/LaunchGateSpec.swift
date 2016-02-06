@@ -82,7 +82,7 @@ class LaunchGateSpec: QuickSpec {
         config = LaunchGateConfiguration()
       }
       
-      context("when the app elligible for a required update") {
+      context("when the app is elligible for a required update") {
         
         it("displays a required update dialog") {
           config.requiredUpdate = LaunchGateUpdateConfiguration(version: "1.1", message: "Update required!")
@@ -116,6 +116,59 @@ class LaunchGateSpec: QuickSpec {
           expect(dialogManager.displayAlertDialogWasCalled) == true
         }
         
+      }
+      
+    }
+    
+    describe("#shouldShowUpdateDialog") {
+      
+      var launchGate: LaunchGate!
+      let updateConfig = LaunchGateUpdateConfiguration(version: "1.1", message: "")
+      
+      beforeEach {
+        launchGate = LaunchGate(uri: "")
+      }
+      
+      it("when the app version is less than the update version, returns true") {
+        let result = launchGate.shouldShowUpdateDialog(updateConfig, appVersion: "1.0")
+        
+        expect(result) == true
+      }
+      
+      it("when the app version is greater than the update version, returns falses") {
+        let result = launchGate.shouldShowUpdateDialog(updateConfig, appVersion: "1.2")
+        
+        expect(result) == false
+      }
+      
+      it("when the app version is equal to the update version, returns false") {
+        let result = launchGate.shouldShowUpdateDialog(updateConfig, appVersion: "1.1")
+        
+        expect(result) == false
+      }
+      
+    }
+    
+    describe("#shouldShowAlertDialog") {
+      
+      var launchGate: LaunchGate!
+      
+      beforeEach {
+        launchGate = LaunchGate(uri: "")
+      }
+      
+      it("when the alert message is not empty, returns true") {
+        let alertConfig = LaunchGateAlertConfiguration(message: "Hello world", blocking: false)
+        let result = launchGate.shouldShowAlertDialog(alertConfig)
+        
+        expect(result) == true
+      }
+      
+      it("when the alert message is empty, returns false") {
+        let alertConfig = LaunchGateAlertConfiguration(message: "", blocking: false)
+        let result = launchGate.shouldShowAlertDialog(alertConfig)
+        
+        expect(result) == false
       }
       
     }

@@ -54,7 +54,6 @@
 		AF8F034C35757C2376E9F80B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateSpec.swift; sourceTree = "<group>"; };
 		C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateRemoteFileManagerSpec.swift; sourceTree = "<group>"; };
-		C5CFE2DD1C6293050047E106 /* LaunchGateConfigurationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateConfigurationSpec.swift; sourceTree = "<group>"; };
 		C5CFE2E01C6294FD0047E106 /* LaunchGateSpecHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchGateSpecHelper.swift; sourceTree = "<group>"; };
 		C5CFE2E61C62B2350047E106 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = config.json; path = Fixtures/config.json; sourceTree = "<group>"; };
 		C5CFE2E81C63D0D00047E106 /* config-malformed-ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "config-malformed-ios.json"; path = "Fixtures/config-malformed-ios.json"; sourceTree = "<group>"; };
@@ -151,7 +150,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C5CFE2DD1C6293050047E106 /* LaunchGateConfigurationSpec.swift */,
 				C5CFE2F61C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift */,
 				C502C4D71C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift */,
 				C502C4D41C502AF300C143F2 /* LaunchGateSpec.swift */,
@@ -423,7 +421,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CFE2E21C62951C0047E106 /* LaunchGateSpecHelper.swift in Sources */,
-				C5CFE2DF1C62949B0047E106 /* LaunchGateConfigurationSpec.swift in Sources */,
 				C5CF93DC1C503B9700A6824C /* LaunchGateSpec.swift in Sources */,
 				C5CFE2F71C63F1A90047E106 /* LaunchGateDefaultParserSpec.swift in Sources */,
 				C502C4D81C502BC400C143F2 /* LaunchGateRemoteFileManagerSpec.swift in Sources */,

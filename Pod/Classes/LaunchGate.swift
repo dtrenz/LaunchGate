@@ -13,8 +13,9 @@ typealias LaunchGateError = protocol<ErrorType, CustomStringConvertible>
 
 public class LaunchGate {
 
+  public var parser: LaunchGateParser
+
   let configurationFileURI: String
-  var parser: LaunchGateParser
   var dialogManager: LaunchGateDialogManager
 
   // MARK: - Public API
@@ -29,10 +30,6 @@ public class LaunchGate {
     let remoteFileManager = LaunchGateRemoteFileManager(remoteFileURIString: configurationFileURI)
 
     performCheck(remoteFileManager)
-  }
-
-  public func setParser<T: LaunchGateParser>(parser: T) {
-    self.parser = parser
   }
 
   // MARK: - Internal API
