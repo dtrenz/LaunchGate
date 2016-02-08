@@ -9,28 +9,65 @@
 import Foundation
 
 
-internal typealias LaunchGateError = protocol<ErrorType, CustomStringConvertible>
+typealias LaunchGateError = protocol<ErrorType, CustomStringConvertible>
 
 public class LaunchGate {
 
-  internal var remoteFileManager: LaunchGateRemoteFileManager
-  internal var parser: LaunchGateParser
+  public var parser: LaunchGateParser
+
+  let configurationFileURI: String
+  var dialogManager: LaunchGateDialogManager
+
+  // MARK: - Public API
 
   public init(uri: String) {
-    remoteFileManager = LaunchGateRemoteFileManager(remoteFileURIString: uri)
+    configurationFileURI = uri
     parser = LaunchGateDefaultParser()
+    dialogManager = LaunchGateDialogManager()
   }
 
-  public func performCheck() {
+  public func check() {
+    let remoteFileManager = LaunchGateRemoteFileManager(remoteFileURIString: configurationFileURI)
+
+    performCheck(remoteFileManager)
+  }
+
+  // MARK: - Internal API
+
+  func performCheck(remoteFileManager: LaunchGateRemoteFileManager) {
+
     remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
       if let config = self.parser.parse(jsonData) {
-        print(config)
+        self.displayDialogIfNecessary(config, dialogManager: LaunchGateDialogManager())
       }
     }
+
   }
 
-  public func setParser<T: LaunchGateParser>(parser: T) {
-    self.parser = parser
+  func displayDialogIfNecessary(config: LaunchGateConfiguration, dialogManager: LaunchGateDialogManager) {
+
+    if let appVersion = currentAppVersion() {
+      if let reqUpdate = config.requiredUpdate where shouldShowUpdateDialog(reqUpdate, appVersion: appVersion) {
+        dialogManager.displayRequiredUpdateDialog(reqUpdate.message)
+      } else if let optUpdate = config.optionalUpdate where shouldShowUpdateDialog(optUpdate, appVersion: appVersion) {
+        dialogManager.displayOptionalUpdateDialog(optUpdate.message)
+      } else if let alert = config.alert where shouldShowAlertDialog(alert) {
+        dialogManager.displayAlertDialog(alert.message)
+      }
+    }
+
+  }
+
+  func shouldShowUpdateDialog(updateConfig: LaunchGateUpdateConfiguration, appVersion: String) -> Bool {
+    return appVersion < updateConfig.version
+  }
+
+  func shouldShowAlertDialog(alertConfig: LaunchGateAlertConfiguration) -> Bool {
+    return alertConfig.message.isEmpty == false
+  }
+
+  func currentAppVersion() -> String? {
+    return NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
   }
 
 }
