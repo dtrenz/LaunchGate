@@ -7,7 +7,7 @@
   # Find all the available rules by running:
   # swiftlint rules
 included: # paths to include during linting. `--path` is ignored if present.
-  - Pod/Classes
+  - Source
 # parameterized rules can be customized from this configuration file
 line_length: 120
 # parameterized rules are first parameterized as a warning level, then error level.

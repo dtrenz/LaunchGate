@@ -23,10 +23,7 @@ Pod::Spec.new do |s|
   s.author           = { "Dan Trenz" => "dtrenz@gmail.com" }
   s.source           = { :git => "https://github.com/dtrenz/LaunchGate.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/dtrenz'
-  s.platform     = :ios, '8.3'
-  s.requires_arc = true
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'LaunchGate' => ['Pod/Assets/*.png']
-  }
+  s.platform         = :ios, '8.3'
+  s.requires_arc     = true
+  s.source_files     = 'Source/**/*'
 end
