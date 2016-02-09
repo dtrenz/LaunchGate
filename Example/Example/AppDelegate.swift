@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  lazy var launchGate = LaunchGate(uri: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Example/Tests/Fixtures/config.json")
+  lazy var launchGate = LaunchGate(uri: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Tests/Fixtures/config.json")
 
   func applicationDidBecomeActive(application: UIApplication) {
     launchGate.check()
