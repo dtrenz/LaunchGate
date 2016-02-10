@@ -11,28 +11,16 @@ import Foundation
 
 class RemoteFileManager {
 
-  let remoteFileURI: NSURL?
+  let remoteFileURL: NSURL
 
-  init(remoteFileURIString: String) {
-    if let uri = NSURL(string: remoteFileURIString) {
-      remoteFileURI = uri
-    } else {
-      remoteFileURI = nil
-    }
+  init(remoteFileURL: NSURL) {
+    self.remoteFileURL = remoteFileURL
   }
 
   func fetchRemoteFile(callback: (NSData) -> Void) {
-    if let uri = remoteFileURI, request = createRemoteFileRequest(uri) {
-      performRemoteFileRequest(request, responseHandler: callback)
-    }
-  }
+    let request = NSURLRequest(URL: remoteFileURL)
 
-  func createRemoteFileRequest(uri: NSURL) -> NSURLRequest? {
-    guard let uri = remoteFileURI else {
-      return nil
-    }
-
-    return NSURLRequest(URL: uri)
+    performRemoteFileRequest(request, responseHandler: callback)
   }
 
   func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: NSData) -> Void) {

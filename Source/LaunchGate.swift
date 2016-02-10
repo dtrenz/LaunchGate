@@ -13,57 +13,69 @@ typealias LaunchGateError = protocol<ErrorType, CustomStringConvertible>
 
 public class LaunchGate {
 
-  public var parser: LaunchGateParser
+  public var parser: LaunchGateParser!
 
-  let configurationFileURI: String
-  var dialogManager: DialogManager
+  var configurationFileURL: NSURL!
+  var updateURL: NSURL!
+  var dialogManager: DialogManager!
 
   // MARK: - Public API
 
-  public init(uri: String) {
-    configurationFileURI = uri
+  public init?(configURI: String, appStoreURI: String) {
+    guard let configURL = NSURL(string: configURI) else { return nil }
+    guard let appStoreURL = NSURL(string: appStoreURI) else { return nil }
+
+    configurationFileURL = configURL
+    updateURL = appStoreURL
     parser = DefaultParser()
     dialogManager = DialogManager()
   }
 
   public func check() {
-    let remoteFileManager = RemoteFileManager(remoteFileURIString: configurationFileURI)
-
-    performCheck(remoteFileManager)
+    performCheck(RemoteFileManager(remoteFileURL: configurationFileURL))
   }
 
   // MARK: - Internal API
 
   func performCheck(remoteFileManager: RemoteFileManager) {
-
     remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
       if let config = self.parser.parse(jsonData) {
-        self.displayDialogIfNecessary(config, dialogManager: DialogManager())
+        self.displayDialogIfNecessary(config, dialogManager: self.dialogManager)
       }
     }
-
   }
 
   func displayDialogIfNecessary(config: LaunchGateConfiguration, dialogManager: DialogManager) {
-
-    if let appVersion = currentAppVersion() {
-      if let reqUpdate = config.requiredUpdate where shouldShowUpdateDialog(reqUpdate, appVersion: appVersion) {
-        dialogManager.displayRequiredUpdateDialog(reqUpdate)
-      } else if let optUpdate = config.optionalUpdate where shouldShowUpdateDialog(optUpdate, appVersion: appVersion) {
-        dialogManager.displayOptionalUpdateDialog(optUpdate)
-      } else if let alert = config.alert where shouldShowAlertDialog(alert) {
-        dialogManager.displayAlertDialog(alert)
+    if let reqUpdate = config.requiredUpdate, appVersion = currentAppVersion() {
+      if shouldShowRequiredUpdateDialog(reqUpdate, appVersion: appVersion) {
+        dialogManager.displayRequiredUpdateDialog(reqUpdate, updateURL: updateURL)
+      }
+    } else if let optUpdate = config.optionalUpdate, appVersion = currentAppVersion() {
+      if shouldShowOptionalUpdateDialog(optUpdate, appVersion: appVersion) {
+        dialogManager.displayOptionalUpdateDialog(optUpdate, updateURL: updateURL)
+      }
+    } else if let alert = config.alert {
+      if shouldShowAlertDialog(alert) {
+        dialogManager.displayAlertDialog(alert, blocking: alert.blocking)
       }
     }
-
-  }
-
-  func shouldShowUpdateDialog(updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
-    return appVersion < updateConfig.version
   }
 
   func shouldShowAlertDialog(alertConfig: AlertConfiguration) -> Bool {
-    return alertConfig.message.isEmpty == false
+    guard alertConfig.blocking == false else { return true }
+    guard alertConfig.isNotRemembered() else { return false }
+
+    return !alertConfig.message.isEmpty
+  }
+
+  func shouldShowOptionalUpdateDialog(updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
+    guard updateConfig.isNotRemembered() else { return false }
+
+    return appVersion < updateConfig.version
+  }
+
+  func shouldShowRequiredUpdateDialog(updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
+    return appVersion < updateConfig.version
   }
 
   func currentAppVersion() -> String? {

@@ -23,6 +23,7 @@
 		C5478DEC1C6968DF00843BA3 /* LaunchGateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DE01C6968D900843BA3 /* LaunchGateSpec.swift */; };
 		C5478DED1C6968DF00843BA3 /* SpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DE11C6968D900843BA3 /* SpecHelper.swift */; };
 		C5478DEE1C6968DF00843BA3 /* ConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DE21C6968D900843BA3 /* ConfigurationSpec.swift */; };
+		C54CD9661C6BBAF50049E669 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54CD9651C6BBAF50049E669 /* Memory.swift */; };
 		C5A8787A1C6A74DD004599C2 /* config-malformed-alert.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A8786E1C6A74B9004599C2 /* config-malformed-alert.json */; };
 		C5A8787B1C6A74DD004599C2 /* config-malformed-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A8786F1C6A74B9004599C2 /* config-malformed-empty.json */; };
 		C5A8787C1C6A74DD004599C2 /* config-malformed-ios.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A878701C6A74B9004599C2 /* config-malformed-ios.json */; };
@@ -62,6 +63,7 @@
 		C5478DE11C6968D900843BA3 /* SpecHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpecHelper.swift; path = Tests/SpecHelper.swift; sourceTree = SOURCE_ROOT; };
 		C5478DE21C6968D900843BA3 /* ConfigurationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSpec.swift; path = Tests/ConfigurationSpec.swift; sourceTree = SOURCE_ROOT; };
 		C5478DE31C6968D900843BA3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
+		C54CD9651C6BBAF50049E669 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Memory.swift; path = Source/Memory.swift; sourceTree = SOURCE_ROOT; };
 		C5A8786E1C6A74B9004599C2 /* config-malformed-alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-malformed-alert.json"; sourceTree = "<group>"; };
 		C5A8786F1C6A74B9004599C2 /* config-malformed-empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-malformed-empty.json"; sourceTree = "<group>"; };
 		C5A878701C6A74B9004599C2 /* config-malformed-ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-malformed-ios.json"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				C5478DCA1C6968C800843BA3 /* LaunchGate.swift */,
 				C5478DCB1C6968C800843BA3 /* LaunchGateConfiguration.swift */,
 				C5478DCD1C6968C800843BA3 /* LaunchGateParser.swift */,
+				C54CD9651C6BBAF50049E669 /* Memory.swift */,
 				C5478DCF1C6968C800843BA3 /* Rememberable.swift */,
 				C5478DCE1C6968C800843BA3 /* RemoteFileManager.swift */,
 				C5478DD01C6968C800843BA3 /* UpdateConfiguration.swift */,
@@ -382,6 +385,7 @@
 				C5478DD31C6968C800843BA3 /* AlertConfiguration.swift in Sources */,
 				C5478DD81C6968C800843BA3 /* LaunchGateParser.swift in Sources */,
 				C5478DD41C6968C800843BA3 /* DialogManager.swift in Sources */,
+				C54CD9661C6BBAF50049E669 /* Memory.swift in Sources */,
 				C5478DDB1C6968C800843BA3 /* UpdateConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

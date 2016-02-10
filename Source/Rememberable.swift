@@ -15,18 +15,8 @@ protocol Rememberable {
 
 extension Rememberable {
 
-  func remember() {
-    NSUserDefaults.standardUserDefaults().setObject(rememberString(), forKey: rememberKey())
-  }
-
   func isNotRemembered() -> Bool {
-    let defaults =  NSUserDefaults.standardUserDefaults()
-
-    if let alert = defaults.stringForKey(rememberKey()) where alert == rememberString() {
-      return false
-    }
-
-    return true
+    return !Memory.contains(self)
   }
 
 }
