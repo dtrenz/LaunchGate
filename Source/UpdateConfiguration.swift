@@ -11,10 +11,13 @@ import Foundation
 
 public struct UpdateConfiguration: Dialogable, Rememberable {
 
-  let version: String
-  let message: String
+  var version = ""
+  var message = ""
 
-  init(version: String, message: String) {
+  init?(version: String, message: String) {
+    guard !version.isEmpty else { return nil }
+    guard !message.isEmpty else { return nil }
+
     self.version = version
     self.message = message
   }
