@@ -19,43 +19,31 @@ class DialogManager {
 
   enum DialogType {
     case Alert(blocking: Bool)
-    case OptionalUpdate
-    case RequiredUpdate
+    case OptionalUpdate(updateURL: NSURL)
+    case RequiredUpdate(updateURL: NSURL)
   }
 
   func displayAlertDialog(alertConfig: RememberableDialogSubject, blocking: Bool) {
-    let dialog = createAlertController(.Alert(blocking: blocking), message: alertConfig.message, updateURL: nil)
+    let dialog = createAlertController(.Alert(blocking: blocking), message: alertConfig.message)
 
-    dispatch_async(dispatch_get_main_queue()) { [] in
-      if let topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
-        topViewController.presentViewController(dialog, animated: true) {
-          if !blocking {
-            Memory.remember(alertConfig)
-          }
-        }
+    displayAlertController(dialog) { () -> Void in
+      if !blocking {
+        Memory.remember(alertConfig)
       }
     }
   }
 
   func displayRequiredUpdateDialog(updateConfig: Dialogable, updateURL: NSURL) {
-    let dialog = createAlertController(.RequiredUpdate, message: updateConfig.message, updateURL: updateURL)
+    let dialog = createAlertController(.RequiredUpdate(updateURL: updateURL), message: updateConfig.message)
 
-    dispatch_async(dispatch_get_main_queue()) { [] in
-      if let topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
-        topViewController.presentViewController(dialog, animated: true, completion: nil)
-      }
-    }
+    displayAlertController(dialog, completion: nil)
   }
 
   func displayOptionalUpdateDialog(updateConfig: RememberableDialogSubject, updateURL: NSURL) {
-    let dialog = createAlertController(.OptionalUpdate, message: updateConfig.message, updateURL: updateURL)
+    let dialog = createAlertController(.OptionalUpdate(updateURL: updateURL), message: updateConfig.message)
 
-    dispatch_async(dispatch_get_main_queue()) { [] in
-      if let topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
-        topViewController.presentViewController(dialog, animated: true) {
-          Memory.remember(updateConfig)
-        }
-      }
+    displayAlertController(dialog) { () -> Void in
+      Memory.remember(updateConfig)
     }
   }
 
@@ -63,7 +51,7 @@ class DialogManager {
 
   // MARK: Custom Alert Controllers
 
-  private func createAlertController(type: DialogType, message: String, updateURL: NSURL?) -> UIAlertController {
+  private func createAlertController(type: DialogType, message: String) -> UIAlertController {
     let alertController = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
 
     switch type {
@@ -72,20 +60,27 @@ class DialogManager {
           alertController.addAction(dismissActon())
         }
 
-      case .OptionalUpdate:
+      case let .OptionalUpdate(updateURL):
         alertController.addAction(dismissActon())
+        alertController.addAction(updateAction(updateURL))
 
-        if let updateURL = updateURL {
-          alertController.addAction(updateAction(updateURL))
-        }
-
-      case .RequiredUpdate:
-        if let updateURL = updateURL {
-          alertController.addAction(updateAction(updateURL))
-        }
+      case let .RequiredUpdate(updateURL):
+        alertController.addAction(updateAction(updateURL))
     }
 
     return alertController
+  }
+
+  private func displayAlertController(alert: UIAlertController, completion: (() -> Void)?) {
+    dispatch_async(dispatch_get_main_queue()) { [] in
+      if let topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
+        topViewController.presentViewController(alert, animated: true) {
+          if let completion = completion {
+            completion()
+          }
+        }
+      }
+    }
   }
 
   // MARK: Custom Alert Actions

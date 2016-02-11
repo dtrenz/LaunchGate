@@ -62,10 +62,7 @@ public class LaunchGate {
   }
 
   func shouldShowAlertDialog(alertConfig: AlertConfiguration) -> Bool {
-    guard alertConfig.blocking == false else { return true }
-    guard alertConfig.isNotRemembered() else { return false }
-
-    return !alertConfig.message.isEmpty
+    return alertConfig.blocking || alertConfig.isNotRemembered()
   }
 
   func shouldShowOptionalUpdateDialog(updateConfig: UpdateConfiguration, appVersion: String) -> Bool {

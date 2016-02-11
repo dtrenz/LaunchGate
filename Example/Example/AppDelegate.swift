@@ -24,15 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // If you need to use a custom config file structure,
     // you can create a default parser that conforms to LaunchGateParser:
     //
-    // launchGate.parser = MyCustomParser()
+    // launchGate?.parser = MyCustomParser()
     
     return launchGate
   }()
   
   func applicationDidBecomeActive(application: UIApplication) {
-    if let launchGate = launchGate {
-      launchGate.check()
-    }
+    launchGate?.check()
   }
 
 }

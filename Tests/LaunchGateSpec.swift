@@ -108,7 +108,7 @@ class LaunchGateSpec: QuickSpec {
         it("displays an optional update dialog") {
           let optionalUpdate = UpdateConfiguration(version: "1.2", message: "Optional update availabe.")
           config.optionalUpdate = optionalUpdate
-          Memory.forget(optionalUpdate)
+          Memory.forget(optionalUpdate!)
           
           launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
           
@@ -122,7 +122,7 @@ class LaunchGateSpec: QuickSpec {
         it("displays an alert dialog") {
           let alert = AlertConfiguration(message: "Hello world", blocking: false)
           config.alert = alert
-          Memory.forget(alert)
+          Memory.forget(alert!)
           
           launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
           
@@ -145,34 +145,12 @@ class LaunchGateSpec: QuickSpec {
         
         context("when the alert is a blocking alert") {
           it("returns true") {
-            let alertConfig = AlertConfiguration(message: "Hello world", blocking: true)
+            let alertConfig = AlertConfiguration(message: "Hello world", blocking: true)!
             Memory.forget(alertConfig)
             
             let result = launchGate.shouldShowAlertDialog(alertConfig)
             
             expect(result) == true
-          }
-        }
-        
-        context("when the alert message is not empty") {
-          it("returns true") {
-            let alertConfig = AlertConfiguration(message: "Hello world", blocking: false)
-            Memory.forget(alertConfig)
-            
-            let result = launchGate.shouldShowAlertDialog(alertConfig)
-            
-            expect(result) == true
-          }
-        }
-          
-        context("when the alert message is empty") {
-          it("returns false") {
-            let alertConfig = AlertConfiguration(message: "", blocking: false)
-            Memory.forget(alertConfig)
-            
-            let result = launchGate.shouldShowAlertDialog(alertConfig)
-            
-            expect(result) == false
           }
         }
         
@@ -182,7 +160,7 @@ class LaunchGateSpec: QuickSpec {
         
         context("when the alert is a blocking alert") {
           it("returns true") {
-            let alertConfig = AlertConfiguration(message: "Hello world", blocking: true)
+            let alertConfig = AlertConfiguration(message: "Hello world", blocking: true)!
             Memory.remember(alertConfig)
             
             let result = launchGate.shouldShowAlertDialog(alertConfig)
@@ -198,7 +176,7 @@ class LaunchGateSpec: QuickSpec {
     describe("#shouldShowOptionalUpdateDialog") {
       
       var launchGate: LaunchGate!
-      let updateConfig = UpdateConfiguration(version: "1.2", message: "")
+      let updateConfig = UpdateConfiguration(version: "1.2", message: "An update is available")!
       
       beforeEach {
         launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)
@@ -266,7 +244,7 @@ class LaunchGateSpec: QuickSpec {
     describe("#shouldShowRequiredUpdateDialog") {
       
       var launchGate: LaunchGate!
-      let updateConfig = UpdateConfiguration(version: "1.1", message: "")
+      let updateConfig = UpdateConfiguration(version: "1.1", message: "An update is available.")!
       
       beforeEach {
         launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)

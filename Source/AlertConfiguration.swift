@@ -10,10 +10,12 @@ import Foundation
 
 public struct AlertConfiguration: Dialogable, Rememberable {
 
-  let message: String
-  let blocking: Bool
+  var message = ""
+  var blocking = false
 
-  init(message: String, blocking: Bool) {
+  init?(message: String, blocking: Bool) {
+    guard !message.isEmpty else { return nil }
+
     self.message = message
     self.blocking = blocking
   }
