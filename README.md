@@ -135,9 +135,7 @@ In this example, users with a version of the app less than "1.1" will see an
 alert dialog when the app is opened, with an "Update" button that will take them
 to the App Store so that they can download the latest version.
 
-<div style="text-align:center">
-  <img src="Docs/Screenshots/required-update.png" width="300" alt="Required Update Screenshot">
-</div>
+<img src="Docs/Screenshots/required-update.png" width="300" style="display: block; margin: 0 auto;" alt="Required Update Screenshot">
 
 
 ### Optional Update
@@ -164,9 +162,7 @@ encourage users that do not have automatic updates enabled to upgrade.
 }
 ```
 
-<div style="text-align:center">
-  <img src="Docs/Screenshots/optional-update.png" width="300" alt="Optional Update Screenshot">
-</div>
+<img src="Docs/Screenshots/optional-update.png" width="300" style="display: block; margin: 0 auto;" alt="Optional Update Screenshot">
 
 
 ### Alert Messages
@@ -199,9 +195,7 @@ for maintenance, and you don't want users of the app to be affected.
 }
 ```
 
-<div style="text-align:center">
-  <img src="Docs/Screenshots/alert-blocking.png" width="300" alt="Blocking Alert Screenshot">
-</div>
+<img src="Docs/Screenshots/alert-blocking.png" width="300" style="display: block; margin: 0 auto;" alt="Blocking Alert Screenshot">
 
 
 #### Non-Blocking Alert
@@ -223,9 +217,7 @@ experience may be degraded.
 }
 ```
 
-<div style="text-align:center">
-  <img src="Docs/Screenshots/alert-nonblocking.png" width="300" alt="Non-Blocking Alert Screenshot">
-</div>
+<img src="Docs/Screenshots/alert-nonblocking.png" width="300" style="display: block; margin: 0 auto;" alt="Non-Blocking Alert Screenshot">
 
 
 ## Custom Configuration Parser
