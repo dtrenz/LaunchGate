@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "requiredUpdate": {
+      "minimumVersion": "1.1",
+      "message": "An update is required to continue using this app."
+    }
+  }
+}
