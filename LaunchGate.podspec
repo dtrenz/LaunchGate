@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "LaunchGate"
-  s.version          = "0.1.0"
+  s.version          = "1.0.0"
   s.summary          = <<-SUMMARY
                        LaunchGate makes it easy to let users know when an update to your app is available.
                        SUMMARY
