@@ -5,8 +5,8 @@
       "blocking": true
     },
     "optionalUpdate": {
-      "optionalVersion": "6",
-      "message": "A new version of the application is available, please click below to update to the latest version."
+      "optionalVersion": "1.2",
+      "message": "A new version of this app is available."
     }
   }
 }

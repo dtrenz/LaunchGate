@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   lazy var launchGate: LaunchGate? = {
     let launchGate = LaunchGate(
-      configURI: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Tests/Fixtures/config.json",
+      configURI: "https://raw.githubusercontent.com/dtrenz/LaunchGate/master/example.json",
       appStoreURI: "itms-apps://itunes.apple.com/us/app/wikipedia-mobile/id324715238"
     )
     

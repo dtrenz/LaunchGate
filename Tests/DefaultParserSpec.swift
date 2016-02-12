@@ -33,19 +33,19 @@ class DefaultParserSpec: QuickSpec {
         }
         
         it("parses the optional update version from the configuration file") {
-          expect(config.optionalUpdate!.version) == "2.0"
+          expect(config.optionalUpdate!.version) == "1.2"
         }
         
         it("parses the optional update message from the configuration file") {
-          expect(config.optionalUpdate!.message) == "A new version of the application is available, please click below to update to the latest version."
+          expect(config.optionalUpdate!.message) == "A new version of this app is available."
         }
         
         it("parses the required update version from the configuration file") {
-          expect(config.requiredUpdate!.version) == "1.2"
+          expect(config.requiredUpdate!.version) == "1.1"
         }
         
         it("parses the required update message from the configuration file") {
-          expect(config.requiredUpdate!.message) == "A new version of the application is available and is required to continue, please click below to update to the latest version."
+          expect(config.requiredUpdate!.message) == "An update is required to continue using this app."
         }
         
       }
