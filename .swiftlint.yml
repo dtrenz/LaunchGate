@@ -1,5 +1,5 @@
 disabled_rules: # rule identifiers to exclude from running
- - variable_name
+ - valid_docs
   # Find all the available rules by running:
   # swiftlint rules
 included: # paths to include during linting. `--path` is ignored if present.
