@@ -24,12 +24,17 @@
 		C5478DED1C6968DF00843BA3 /* SpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DE11C6968D900843BA3 /* SpecHelper.swift */; };
 		C5478DEE1C6968DF00843BA3 /* ConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DE21C6968D900843BA3 /* ConfigurationSpec.swift */; };
 		C54CD9661C6BBAF50049E669 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54CD9651C6BBAF50049E669 /* Memory.swift */; };
+		C5A110021C73D6D500ACA109 /* config-alert.json in Resources */ = {isa = PBXBuildFile; fileRef = C54758521C73D692000A6EFA /* config-alert.json */; };
+		C5A110031C73D6D900ACA109 /* config-required.json in Resources */ = {isa = PBXBuildFile; fileRef = C547584E1C73CC17000A6EFA /* config-required.json */; };
+		C5A110041C73D6DC00ACA109 /* config-optional.json in Resources */ = {isa = PBXBuildFile; fileRef = C547584C1C73CBF8000A6EFA /* config-optional.json */; };
 		C5A8787A1C6A74DD004599C2 /* config-malformed-alert.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A8786E1C6A74B9004599C2 /* config-malformed-alert.json */; };
 		C5A8787B1C6A74DD004599C2 /* config-malformed-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A8786F1C6A74B9004599C2 /* config-malformed-empty.json */; };
 		C5A8787C1C6A74DD004599C2 /* config-malformed-ios.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A878701C6A74B9004599C2 /* config-malformed-ios.json */; };
 		C5A8787D1C6A74DD004599C2 /* config-malformed-optional.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A878711C6A74B9004599C2 /* config-malformed-optional.json */; };
 		C5A8787E1C6A74DD004599C2 /* config-malformed-required.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A878721C6A74B9004599C2 /* config-malformed-required.json */; };
 		C5A8787F1C6A74DD004599C2 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = C5A878731C6A74B9004599C2 /* config.json */; };
+		C5ACC55D1C75240F009AE9F0 /* MemorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACC55C1C75240F009AE9F0 /* MemorySpec.swift */; };
+		C5ACF5341C74EF72009C1729 /* DialogManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACF5331C74EF72009C1729 /* DialogManagerSpec.swift */; };
 		C5C04BD11C696767007397D0 /* LaunchGate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C04BC61C696767007397D0 /* LaunchGate.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,9 @@
 /* Begin PBXFileReference section */
 		14E919E48184B1E85E4115F1 /* Pods_LaunchGateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LaunchGateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39FB08149E97FF0556C997D /* Pods-LaunchGateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGateTests/Pods-LaunchGateTests.release.xcconfig"; sourceTree = "<group>"; };
+		C547584C1C73CBF8000A6EFA /* config-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-optional.json"; sourceTree = "<group>"; };
+		C547584E1C73CC17000A6EFA /* config-required.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-required.json"; sourceTree = "<group>"; };
+		C54758521C73D692000A6EFA /* config-alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-alert.json"; sourceTree = "<group>"; };
 		C5478DC81C6968C800843BA3 /* AlertConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertConfiguration.swift; path = Source/AlertConfiguration.swift; sourceTree = SOURCE_ROOT; };
 		C5478DC91C6968C800843BA3 /* DialogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogManager.swift; path = Source/DialogManager.swift; sourceTree = SOURCE_ROOT; };
 		C5478DCA1C6968C800843BA3 /* LaunchGate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchGate.swift; path = Source/LaunchGate.swift; sourceTree = SOURCE_ROOT; };
@@ -70,6 +78,8 @@
 		C5A878711C6A74B9004599C2 /* config-malformed-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-malformed-optional.json"; sourceTree = "<group>"; };
 		C5A878721C6A74B9004599C2 /* config-malformed-required.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-malformed-required.json"; sourceTree = "<group>"; };
 		C5A878731C6A74B9004599C2 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		C5ACC55C1C75240F009AE9F0 /* MemorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemorySpec.swift; path = Tests/MemorySpec.swift; sourceTree = SOURCE_ROOT; };
+		C5ACF5331C74EF72009C1729 /* DialogManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogManagerSpec.swift; path = Tests/DialogManagerSpec.swift; sourceTree = SOURCE_ROOT; };
 		C5C04BC61C696767007397D0 /* LaunchGate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LaunchGate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C04BD01C696767007397D0 /* LaunchGateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchGateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A3DA34DC3D21E902E20A86 /* Pods-LaunchGateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGateTests/Pods-LaunchGateTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,7 +130,10 @@
 				C5A878701C6A74B9004599C2 /* config-malformed-ios.json */,
 				C5A878711C6A74B9004599C2 /* config-malformed-optional.json */,
 				C5A878721C6A74B9004599C2 /* config-malformed-required.json */,
+				C547584C1C73CBF8000A6EFA /* config-optional.json */,
+				C547584E1C73CC17000A6EFA /* config-required.json */,
 				C5A878731C6A74B9004599C2 /* config.json */,
+				C54758521C73D692000A6EFA /* config-alert.json */,
 			);
 			name = Fixtures;
 			path = Tests/Fixtures;
@@ -187,7 +200,9 @@
 			children = (
 				C5478DE21C6968D900843BA3 /* ConfigurationSpec.swift */,
 				C5478DDE1C6968D900843BA3 /* DefaultParserSpec.swift */,
+				C5ACF5331C74EF72009C1729 /* DialogManagerSpec.swift */,
 				C5478DE01C6968D900843BA3 /* LaunchGateSpec.swift */,
+				C5ACC55C1C75240F009AE9F0 /* MemorySpec.swift */,
 				C5478DDF1C6968D900843BA3 /* RemoteFileManagerSpec.swift */,
 				C5478DE11C6968D900843BA3 /* SpecHelper.swift */,
 				C5A8786D1C6A74B9004599C2 /* Fixtures */,
@@ -299,9 +314,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A110031C73D6D900ACA109 /* config-required.json in Resources */,
+				C5A110041C73D6DC00ACA109 /* config-optional.json in Resources */,
 				C5A8787F1C6A74DD004599C2 /* config.json in Resources */,
 				C5A8787B1C6A74DD004599C2 /* config-malformed-empty.json in Resources */,
 				C5A8787A1C6A74DD004599C2 /* config-malformed-alert.json in Resources */,
+				C5A110021C73D6D500ACA109 /* config-alert.json in Resources */,
 				C5A8787C1C6A74DD004599C2 /* config-malformed-ios.json in Resources */,
 				C5A8787E1C6A74DD004599C2 /* config-malformed-required.json in Resources */,
 				C5A8787D1C6A74DD004599C2 /* config-malformed-optional.json in Resources */,
@@ -398,7 +416,9 @@
 				C5478DEB1C6968DF00843BA3 /* RemoteFileManagerSpec.swift in Sources */,
 				C5478DEC1C6968DF00843BA3 /* LaunchGateSpec.swift in Sources */,
 				C5478DEA1C6968DF00843BA3 /* DefaultParserSpec.swift in Sources */,
+				C5ACF5341C74EF72009C1729 /* DialogManagerSpec.swift in Sources */,
 				C5478DEE1C6968DF00843BA3 /* ConfigurationSpec.swift in Sources */,
+				C5ACC55D1C75240F009AE9F0 /* MemorySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

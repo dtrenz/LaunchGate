@@ -18,13 +18,11 @@ class RemoteFileManager {
   }
 
   func fetchRemoteFile(callback: (NSData) -> Void) {
-    let request = NSURLRequest(URL: remoteFileURL)
-
-    performRemoteFileRequest(request, responseHandler: callback)
+    performRemoteFileRequest(NSURLSession.sharedSession(), url: remoteFileURL, responseHandler: callback)
   }
 
-  func performRemoteFileRequest(request: NSURLRequest, responseHandler: (data: NSData) -> Void) {
-    let session = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+  func performRemoteFileRequest(session: NSURLSession, url: NSURL, responseHandler: (data: NSData) -> Void) {
+    let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
@@ -37,7 +35,7 @@ class RemoteFileManager {
       responseHandler(data: data)
     }
 
-    session.resume()
+    task.resume()
   }
 
 }
