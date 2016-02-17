@@ -6,6 +6,9 @@
 build/
 DerivedData
 
+# Slather code coverage artifacts
+cobertura.xml
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
