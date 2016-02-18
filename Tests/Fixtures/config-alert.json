@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "alert": {
+      "message": "We are currently performing server maintenance. Please try again later.",
+      "blocking": true
+    }
+  }
+}

@@ -47,11 +47,9 @@ class DialogManager {
     }
   }
 
-  // MARK: - Private Methods
-
   // MARK: Custom Alert Controllers
 
-  private func createAlertController(type: DialogType, message: String) -> UIAlertController {
+  func createAlertController(type: DialogType, message: String) -> UIAlertController {
     let alertController = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
 
     switch type {
@@ -71,9 +69,9 @@ class DialogManager {
     return alertController
   }
 
-  private func displayAlertController(alert: UIAlertController, completion: (() -> Void)?) {
+  func displayAlertController(alert: UIAlertController, completion: (() -> Void)?) {
     dispatch_async(dispatch_get_main_queue()) { [] in
-      if let topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
+      if let topViewController = self.topViewController() {
         topViewController.presentViewController(alert, animated: true) {
           if let completion = completion {
             completion()
@@ -81,6 +79,10 @@ class DialogManager {
         }
       }
     }
+  }
+
+  func topViewController() -> UIViewController? {
+    return UIApplication.sharedApplication().keyWindow?.rootViewController
   }
 
   // MARK: Custom Alert Actions

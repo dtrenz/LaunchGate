@@ -4,7 +4,8 @@
 [![Version](https://img.shields.io/cocoapods/v/LaunchGate.svg?style=flat)](http://cocoapods.org/pods/LaunchGate)
 [![License](https://img.shields.io/cocoapods/l/LaunchGate.svg?style=flat)](http://cocoapods.org/pods/LaunchGate)
 [![Platform](https://img.shields.io/cocoapods/p/LaunchGate.svg?style=flat)](http://cocoapods.org/pods/LaunchGate)
-<a href="http://www.detroitlabs.com/"><img src="https://img.shields.io/badge/sponsor-Detroit%20Labs-000000.svg?style=flat"></a>
+[![codecov.io](https://codecov.io/github/dtrenz/LaunchGate/coverage.svg?branch=develop)](https://codecov.io/github/dtrenz/LaunchGate?branch=develop)
+[![Sponsored by Detroit Labs](https://img.shields.io/badge/sponsor-Detroit%20Labs-000000.svg?style=flat)](http://www.detroitlabs.com)
 
 LaunchGate makes it easy to let users know when an update
 to your app is available.

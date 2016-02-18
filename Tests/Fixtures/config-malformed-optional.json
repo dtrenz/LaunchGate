@@ -1,12 +1,6 @@
 {
   "ios": {
-    "alert": {
-      "message": "We are currently performing server maintenance. Please try again later.",
-      "blocking": true
-    },
-    "requiredUpdate": {
-      "minimumVersion": "1.1",
-      "message": "An update is required to continue using this app."
+    "optionalUpdate": {
     }
   }
 }

@@ -74,7 +74,91 @@ class DefaultParserSpec: QuickSpec {
         
       }
       
-      context("when the JSON configuration data is missing an alert object") {
+      context("when the JSON configuration only contains an alert object") {
+        
+        it("the alert configuration should not be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-alert.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.alert).toNot(beNil())
+        }
+        
+        it("the optional update configuration should be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-alert.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.optionalUpdate).to(beNil())
+        }
+        
+        it("the required update configuration should be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-alert.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.requiredUpdate).to(beNil())
+        }
+        
+      }
+      
+      context("when the JSON configuration only contains an optionalUpdate object") {
+        
+        it("the optional update configuration should not be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-optional.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.optionalUpdate).toNot(beNil())
+        }
+        
+        it("the alert configuration should be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-optional.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.alert).to(beNil())
+        }
+        
+        it("the required update configuration should be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-optional.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.requiredUpdate).to(beNil())
+        }
+        
+      }
+      
+      context("when the JSON configuration only contains a requiredUpdate object") {
+        
+        it("the required update configuration should not be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-required.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.requiredUpdate).toNot(beNil())
+        }
+        
+        it("the alert configuration should be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-required.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.alert).to(beNil())
+        }
+        
+        it("the optional update configuration should be nil") {
+          jsonData = try! SpecHelper.loadFixture("config-required.json")
+          
+          let config = parser.parse(jsonData)
+          
+          expect(config!.optionalUpdate).to(beNil())
+        }
+        
+      }
+      
+      context("when the JSON configuration contains a malformed alert object") {
         
         it("returns nil") {
           jsonData = try! SpecHelper.loadFixture("config-malformed-alert.json")
@@ -86,7 +170,7 @@ class DefaultParserSpec: QuickSpec {
         
       }
       
-      context("when the JSON configuration data is missing an optionalUpdate object") {
+      context("when the JSON configuration contains a malformed optionalUpdate object") {
         
         it("returns nil") {
           jsonData = try! SpecHelper.loadFixture("config-malformed-optional.json")
@@ -98,10 +182,10 @@ class DefaultParserSpec: QuickSpec {
         
       }
       
-      context("when the JSON configuration data is missing an requiredUpdate object") {
+      context("when the JSON configuration contains a malformed requiredUpdate object") {
         
         it("returns nil") {
-          jsonData = try! SpecHelper.loadFixture("config-malformed-alert.json")
+          jsonData = try! SpecHelper.loadFixture("config-malformed-required.json")
           
           let config = parser.parse(jsonData)
           

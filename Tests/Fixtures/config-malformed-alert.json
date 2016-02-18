@@ -1,12 +1,6 @@
 {
   "ios": {
-    "optionalUpdate": {
-      "optionalVersion": "1.2",
-      "message": "A new version of this app is available."
-    },
-    "requiredUpdate": {
-      "minimumVersion": "1.1",
-      "message": "An update is required to continue using this app."
+    "alert": {
     }
   }
 }
