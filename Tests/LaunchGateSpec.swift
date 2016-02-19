@@ -38,14 +38,41 @@ class LaunchGateSpec: QuickSpec {
       }
       
     }
+    
+    describe("#check") {
+      
+      class MockLaunchGate: LaunchGate {
+        var performCheckWasCalledWithRemoteFileManager = false
+        
+        override func performCheck(remoteFileManager: RemoteFileManager) {
+          if remoteFileManager.remoteFileURL.absoluteString == "https://www.example.com/example.json" {
+            performCheckWasCalledWithRemoteFileManager = true
+          }
+        }
+      }
+      
+      it("calls performCheck with a remote file manager that has been initialized with the config URI") {
+        let launchGate = MockLaunchGate(configURI: configURI, appStoreURI: appStoreURI)
+        
+        launchGate!.check()
+        
+        expect(launchGate!.performCheckWasCalledWithRemoteFileManager) == true
+      }
+      
+    }
 
     describe("#performCheck") {
+      let jsonData = try! SpecHelper.loadFixture("config.json")
 
       class MockRemoteFileManager: RemoteFileManager {
+        var testData: NSData!
+        
         var fetchRemoteFileWasCalled = false
 
         override func fetchRemoteFile(callback: (NSData) -> Void) {
           fetchRemoteFileWasCalled = true
+          
+          callback(testData)
         }
       }
       
@@ -53,6 +80,7 @@ class LaunchGateSpec: QuickSpec {
       
       beforeEach {
         mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: NSURL())
+        mockRemoteFileManager.testData = jsonData
       }
 
       it("calls LaunchGateRemoteFileManager#fetchRemoteFile") {
@@ -61,6 +89,58 @@ class LaunchGateSpec: QuickSpec {
         launchGate!.performCheck(mockRemoteFileManager)
 
         expect(mockRemoteFileManager.fetchRemoteFileWasCalled) == true
+      }
+      
+      context("when the configuration JSON is downloaded") {
+        
+        class MockParser: LaunchGateParser {
+          var testData: NSData!
+          var parseWasCalledWithJSON = false
+          
+          func parse(jsonData: NSData) -> LaunchGateConfiguration? {
+            if jsonData == testData {
+              parseWasCalledWithJSON = true
+            }
+            
+            return LaunchGateConfiguration(alert: nil, optionalUpdate: nil, requiredUpdate: nil)
+          }
+        }
+        
+        let parser = MockParser()
+        
+        beforeEach {
+          parser.testData = jsonData
+        }
+        
+        it("uses its parser to parse the JSON") {
+          let launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)
+          launchGate!.parser = parser
+          
+          launchGate!.performCheck(mockRemoteFileManager)
+          
+          expect(parser.parseWasCalledWithJSON) == true
+        }
+        
+        it("calls displayDialogIfNecessary") {
+          
+          class MockLaunchGate: LaunchGate {
+            var testConfig: LaunchGateConfiguration!
+            
+            var displayDialogWasCalled = false
+            
+            override func displayDialogIfNecessary(config: LaunchGateConfiguration, dialogManager: DialogManager) {
+              displayDialogWasCalled = true
+            }
+          }
+          
+          let launchGate = MockLaunchGate(configURI: configURI, appStoreURI: appStoreURI)
+          launchGate!.parser = parser
+          
+          launchGate!.performCheck(mockRemoteFileManager)
+          
+          expect(launchGate!.displayDialogWasCalled) == true
+          
+        }
       }
 
     }
