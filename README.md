@@ -136,7 +136,7 @@ In this example, users with a version of the app less than "1.1" will see an
 alert dialog when the app is opened, with an "Update" button that will take them
 to the App Store so that they can download the latest version.
 
-<img src="Docs/Screenshots/required-update.png" width="300" style="display: block; margin: 0 auto;" alt="Required Update Screenshot">
+![Required Update Screenshot](https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Screenshots/required-update.png)
 
 
 ### Optional Update
@@ -163,7 +163,7 @@ encourage users that do not have automatic updates enabled to upgrade.
 }
 ```
 
-<img src="Docs/Screenshots/optional-update.png" width="300" style="display: block; margin: 0 auto;" alt="Optional Update Screenshot">
+![Optional Update Screenshot](https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Screenshots/optional-update.png)
 
 
 ### Alert Messages
@@ -196,7 +196,7 @@ for maintenance, and you don't want users of the app to be affected.
 }
 ```
 
-<img src="Docs/Screenshots/alert-blocking.png" width="300" style="display: block; margin: 0 auto;" alt="Blocking Alert Screenshot">
+![Blocking Alert Screenshot](https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Screenshots/alert-blocking.png)
 
 
 #### Non-Blocking Alert
@@ -218,7 +218,7 @@ experience may be degraded.
 }
 ```
 
-<img src="Docs/Screenshots/alert-nonblocking.png" width="300" style="display: block; margin: 0 auto;" alt="Non-Blocking Alert Screenshot">
+![Non-Blocking Alert Screenshot](https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Screenshots/alert-nonblocking.png)
 
 
 ## Custom Configuration Parser
