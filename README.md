@@ -102,6 +102,7 @@ work similarly on both iOS & Android:
 >
 >
 > Example cross-platform configuration:
+>
 > ```json
 {
   "android": {
