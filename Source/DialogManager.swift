@@ -88,11 +88,11 @@ class DialogManager {
   // MARK: Custom Alert Actions
 
   private func dismissActon() -> UIAlertAction {
-    return UIAlertAction(title: "Dismiss", style: .Default) { _ in }
+    return UIAlertAction(title: NSLocalizedString("Dismiss", comment: "Button title for dismissing the update AlertView"), style: .Default) { _ in }
   }
 
   private func updateAction(updateURL: NSURL) -> UIAlertAction {
-    return UIAlertAction(title: "Update", style: .Default) { (action) -> Void in
+    return UIAlertAction(title: NSLocalizedString("Update", comment: "Button title for accepting the update AlertView"), style: .Default) { (action) -> Void in
       if UIApplication.sharedApplication().canOpenURL(updateURL) {
         dispatch_async(dispatch_get_main_queue()) { [] in
           UIApplication.sharedApplication().openURL(updateURL)
