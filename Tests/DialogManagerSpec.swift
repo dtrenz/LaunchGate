@@ -14,15 +14,15 @@ class DialogManagerSpec: QuickSpec {
           var testAlert: AlertConfiguration!
           var createAlertControllerWasCalledWithAlert = false
           
-          override func createAlertController(type: DialogManager.DialogType, message: String) -> UIAlertController {
-            if case let .Alert(blocking) = type where blocking == testAlert.blocking && message == testAlert.message {
+          override func createAlertController(_ type: DialogManager.DialogType, message: String) -> UIAlertController {
+            if case let .Alert(blocking) = type, blocking == testAlert.blocking && message == testAlert.message {
               createAlertControllerWasCalledWithAlert = true
             }
             
             return UIAlertController()
           }
           
-          override func displayAlertController(alert: UIAlertController, completion: (() -> Void)?) {}  // stub
+          override func displayAlertController(_ alert: UIAlertController, completion: (() -> Void)?) {}  // stub
         }
         
         let alert = AlertConfiguration(message: "Hello World", blocking: true)!
@@ -39,7 +39,7 @@ class DialogManagerSpec: QuickSpec {
     describe("dialog memory logic ") {
       
       class MockViewController: UIViewController {
-        override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+        override func presentViewController(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
           completion!()
         }
       }

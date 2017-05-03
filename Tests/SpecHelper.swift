@@ -7,19 +7,19 @@ import Foundation
 
 class SpecHelper {
   
-  enum Error: ErrorType {
-    case BundleNotFound
-    case FileNotFound
+  enum Error: Error {
+    case bundleNotFound
+    case fileNotFound
   }
   
-  static func loadFixture(name: String) throws -> NSData {
-    let bundle = NSBundle(forClass: SpecHelper.self)
+  static func loadFixture(_ name: String) throws -> Data {
+    let bundle = Bundle(for: SpecHelper.self)
     
-    guard let path = bundle.pathForResource(name, ofType: nil) else {
-      throw Error.FileNotFound
+    guard let path = bundle.path(forResource: name, ofType: nil) else {
+      throw Error.fileNotFound
     }
     
-    let data = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe)
     
     return data
   }

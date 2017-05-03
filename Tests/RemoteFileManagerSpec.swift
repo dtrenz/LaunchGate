@@ -6,7 +6,7 @@ import Nimble
 class RemoteFileManagerSpec: QuickSpec {
   override func spec() {
 
-    let exampleURL = NSURL(string: "https://www.launchgate.com/update.json")!
+    let exampleURL = URL(string: "https://www.launchgate.com/update.json")!
 
     describe("#init") {
 
@@ -24,7 +24,7 @@ class RemoteFileManagerSpec: QuickSpec {
         var performRemoteFileRequestWasCalled = false
         var performRemoteFileRequestWasCalledWithRemoteFileURI = false
 
-        override func performRemoteFileRequest(session: NSURLSession, url: NSURL, responseHandler: (data: NSData) -> Void) {
+        override func performRemoteFileRequest(_ session: NSURLSession, url: NSURL, responseHandler: (_ data: NSData) -> Void) {
           if url.absoluteString == "https://www.launchgate.com/update.json" {
             performRemoteFileRequestWasCalledWithRemoteFileURI = true
           }
@@ -57,7 +57,7 @@ class RemoteFileManagerSpec: QuickSpec {
         
         let testData = MockData()
         
-        override func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+        override func dataTaskWithURL(_ url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
           dataTaskWithURLWasCalled = true
           
           completionHandler(testData, nil, nil)

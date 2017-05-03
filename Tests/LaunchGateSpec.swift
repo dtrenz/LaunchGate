@@ -44,7 +44,7 @@ class LaunchGateSpec: QuickSpec {
       class MockLaunchGate: LaunchGate {
         var performCheckWasCalledWithRemoteFileManager = false
         
-        override func performCheck(remoteFileManager: RemoteFileManager) {
+        override func performCheck(_ remoteFileManager: RemoteFileManager) {
           if remoteFileManager.remoteFileURL.absoluteString == "https://www.example.com/example.json" {
             performCheckWasCalledWithRemoteFileManager = true
           }
@@ -69,7 +69,7 @@ class LaunchGateSpec: QuickSpec {
         
         var fetchRemoteFileWasCalled = false
 
-        override func fetchRemoteFile(callback: (NSData) -> Void) {
+        override func fetchRemoteFile(_ callback: (NSData) -> Void) {
           fetchRemoteFileWasCalled = true
           
           callback(testData)
@@ -97,7 +97,7 @@ class LaunchGateSpec: QuickSpec {
           var testData: NSData!
           var parseWasCalledWithJSON = false
           
-          func parse(jsonData: NSData) -> LaunchGateConfiguration? {
+          func parse(_ jsonData: NSData) -> LaunchGateConfiguration? {
             if jsonData == testData {
               parseWasCalledWithJSON = true
             }
@@ -128,7 +128,7 @@ class LaunchGateSpec: QuickSpec {
             
             var displayDialogWasCalled = false
             
-            override func displayDialogIfNecessary(config: LaunchGateConfiguration, dialogManager: DialogManager) {
+            override func displayDialogIfNecessary(_ config: LaunchGateConfiguration, dialogManager: DialogManager) {
               displayDialogWasCalled = true
             }
           }
@@ -156,9 +156,9 @@ class LaunchGateSpec: QuickSpec {
         var displayRequiredUpdateDialogWasCalled = false
         var displayOptionalUpdateDialogWasCalled = false
         
-        override func displayAlertDialog(configObject: DialogManager.RememberableDialogSubject, blocking: Bool) { displayAlertDialogWasCalled = true }
-        override func displayOptionalUpdateDialog(updateConfig: RememberableDialogSubject, updateURL: NSURL) { displayOptionalUpdateDialogWasCalled = true }
-        override func displayRequiredUpdateDialog(updateConfig: Dialogable, updateURL: NSURL) { displayRequiredUpdateDialogWasCalled = true }
+        override func displayAlertDialog(_ configObject: DialogManager.RememberableDialogSubject, blocking: Bool) { displayAlertDialogWasCalled = true }
+        override func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: NSURL) { displayOptionalUpdateDialogWasCalled = true }
+        override func displayRequiredUpdateDialog(_ updateConfig: Dialogable, updateURL: NSURL) { displayRequiredUpdateDialogWasCalled = true }
       }
       
       var launchGate: MockLaunchGate!
