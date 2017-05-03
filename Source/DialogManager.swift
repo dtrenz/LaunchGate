@@ -96,7 +96,7 @@ class DialogManager {
   fileprivate func updateAction(_ updateURL: URL) -> UIAlertAction {
     return UIAlertAction(
         title: NSLocalizedString("Update", comment: "Button title for accepting the update AlertView"),
-        style: .default) { (action) -> Void in
+        style: .default) { (_) -> Void in
             if UIApplication.shared.canOpenURL(updateURL) {
                 DispatchQueue.main.async { [] in
                     UIApplication.shared.openURL(updateURL)

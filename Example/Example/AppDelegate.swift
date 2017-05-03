@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return launchGate
   }()
   
-  func applicationDidBecomeActive(application: UIApplication) {
+  func applicationDidBecomeActive(_ application: UIApplication) {
     launchGate?.check()
   }
 

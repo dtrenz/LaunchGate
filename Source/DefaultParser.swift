@@ -34,8 +34,8 @@ class DefaultParser: LaunchGateParser {
 
   func parse(_ jsonData: Data) -> LaunchGateConfiguration? {
     do {
-        let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! JSON
-
+        let jsonData = try JSONSerialization.jsonObject(with: jsonData, options: [])
+      guard let json = jsonData as? JSON else { throw Error.unableToParseConfigurationObject }
       guard let config = json["ios"] else { throw Error.unableToParseConfigurationObject }
 
       var alert: AlertConfiguration?

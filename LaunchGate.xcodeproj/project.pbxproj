@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7275123AB954D288769E990A /* Pods_LaunchGate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE8225ED27D646C8CFB8C5E /* Pods_LaunchGate.framework */; };
 		C5478DD31C6968C800843BA3 /* AlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DC81C6968C800843BA3 /* AlertConfiguration.swift */; };
 		C5478DD41C6968C800843BA3 /* DialogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DC91C6968C800843BA3 /* DialogManager.swift */; };
 		C5478DD51C6968C800843BA3 /* LaunchGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5478DCA1C6968C800843BA3 /* LaunchGate.swift */; };
@@ -50,8 +51,10 @@
 
 /* Begin PBXFileReference section */
 		09553AF46AB4FDB398881D98 /* Pods_LaunchGateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LaunchGateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		293D3BC7DDE54B109DD218FD /* Pods-LaunchGate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGate/Pods-LaunchGate.debug.xcconfig"; sourceTree = "<group>"; };
 		5AB7C55DD8BF85EC8936F7D7 /* Pods-LaunchGateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGateTests/Pods-LaunchGateTests.release.xcconfig"; sourceTree = "<group>"; };
 		9EE87D27A2BAEF9BC5A90AF1 /* Pods-LaunchGateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGateTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGateTests/Pods-LaunchGateTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A881ED02961A5E6352EEBF2E /* Pods-LaunchGate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchGate.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaunchGate/Pods-LaunchGate.release.xcconfig"; sourceTree = "<group>"; };
 		C547584C1C73CBF8000A6EFA /* config-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-optional.json"; sourceTree = "<group>"; };
 		C547584E1C73CC17000A6EFA /* config-required.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-required.json"; sourceTree = "<group>"; };
 		C54758521C73D692000A6EFA /* config-alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "config-alert.json"; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		C5ACF5331C74EF72009C1729 /* DialogManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogManagerSpec.swift; path = Tests/DialogManagerSpec.swift; sourceTree = SOURCE_ROOT; };
 		C5C04BC61C696767007397D0 /* LaunchGate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LaunchGate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C04BD01C696767007397D0 /* LaunchGateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchGateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBE8225ED27D646C8CFB8C5E /* Pods_LaunchGate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LaunchGate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7275123AB954D288769E990A /* Pods_LaunchGate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +115,8 @@
 			children = (
 				9EE87D27A2BAEF9BC5A90AF1 /* Pods-LaunchGateTests.debug.xcconfig */,
 				5AB7C55DD8BF85EC8936F7D7 /* Pods-LaunchGateTests.release.xcconfig */,
+				293D3BC7DDE54B109DD218FD /* Pods-LaunchGate.debug.xcconfig */,
+				A881ED02961A5E6352EEBF2E /* Pods-LaunchGate.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				09553AF46AB4FDB398881D98 /* Pods_LaunchGateTests.framework */,
+				DBE8225ED27D646C8CFB8C5E /* Pods_LaunchGate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,11 +238,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5C04BDA1C696767007397D0 /* Build configuration list for PBXNativeTarget "LaunchGate" */;
 			buildPhases = (
+				9DC7CFBAF84F9C5EF0293E5A /* [CP] Check Pods Manifest.lock */,
 				C5B85B4E1C6A862E00B007CD /* Swiftlint */,
 				C5C04BC11C696767007397D0 /* Sources */,
 				C5C04BC21C696767007397D0 /* Frameworks */,
 				C5C04BC31C696767007397D0 /* Headers */,
 				C5C04BC41C696767007397D0 /* Resources */,
+				DBC12B8317623B5CF98B6810 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -273,7 +283,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Dan Trenz";
 				TargetAttributes = {
 					C5C04BC51C696767007397D0 = {
@@ -331,6 +341,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9DC7CFBAF84F9C5EF0293E5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9F31E47EBB50721D2046C6CC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		C76D564ED9E289949248D7A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -373,6 +398,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBC12B8317623B5CF98B6810 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LaunchGate/Pods-LaunchGate-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC8B5F2AC9518D4264A0CAB5 /* [CP] Copy Pods Resources */ = {
@@ -448,8 +488,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -496,8 +538,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -517,6 +561,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -526,8 +571,10 @@
 		};
 		C5C04BDB1C696767007397D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 293D3BC7DDE54B109DD218FD /* Pods-LaunchGate.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -545,8 +592,10 @@
 		};
 		C5C04BDC1C696767007397D0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A881ED02961A5E6352EEBF2E /* Pods-LaunchGate.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
