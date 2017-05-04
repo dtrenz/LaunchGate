@@ -24,7 +24,7 @@ class RemoteFileManagerSpec: QuickSpec {
         var performRemoteFileRequestWasCalled = false
         var performRemoteFileRequestWasCalledWithRemoteFileURI = false
 
-        override func performRemoteFileRequest(_ session: NSURLSession, url: NSURL, responseHandler: (_ data: NSData) -> Void) {
+        override func performRemoteFileRequest(_ session: URLSession, url: URL, responseHandler: @escaping (_ data: Data) -> Void) {
           if url.absoluteString == "https://www.launchgate.com/update.json" {
             performRemoteFileRequestWasCalledWithRemoteFileURI = true
           }
@@ -48,19 +48,19 @@ class RemoteFileManagerSpec: QuickSpec {
       // only mocking this class for verification in the callbackWasCalledWithData check below.
       class MockData: NSData {}
       
-      class MockURLSessionDataTask: NSURLSessionDataTask {
+      class MockURLSessionDataTask: URLSessionDataTask {
         override func resume() {} // stub
       }
       
-      class MockURLSession: NSURLSession {
+      class MockURLSession: URLSession {
         var dataTaskWithURLWasCalled = false
         
         let testData = MockData()
         
-        override func dataTaskWithURL(_ url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+        override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
           dataTaskWithURLWasCalled = true
           
-          completionHandler(testData, nil, nil)
+          completionHandler(testData as Data, nil, nil)
           
           return MockURLSessionDataTask()
         }
@@ -82,7 +82,7 @@ class RemoteFileManagerSpec: QuickSpec {
         var callbackWasCalledWithData = false
         
         remoteFileManager.performRemoteFileRequest(session, url: exampleURL) { (data) in
-          if data === session.testData {
+          if data == session.testData as Data {
             callbackWasCalledWithData = true
           }
         }

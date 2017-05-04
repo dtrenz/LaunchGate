@@ -30,7 +30,7 @@ open class LaunchGate {
 
   /**
   Failable initializer. If either the `configURI` or `appStoreURI` are unable to be
-  converted into an `NSURL` (i.e. containing illegal URL characters) this initializer
+  converted into an `URL` (i.e. containing illegal URL characters) this initializer
   will return `nil`.
 
   - Parameters:

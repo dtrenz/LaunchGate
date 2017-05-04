@@ -15,7 +15,7 @@ public protocol LaunchGateParser {
   /**
    Parse the configuration file into a `LaunchGateRemoteConfiguration` object.
 
-   - Parameter jsonData: The configuration file JSON as NSData.
+   - Parameter jsonData: The configuration file JSON as Data.
 
    - Returns: The resulting `LaunchGateRemoteConfiguration` object,
    or `nil` if parsing fails for any reason (i.e. malformed JSON response).

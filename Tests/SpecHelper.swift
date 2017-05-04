@@ -7,7 +7,7 @@ import Foundation
 
 class SpecHelper {
   
-  enum Error: Error {
+  enum SpecHelperError: Error {
     case bundleNotFound
     case fileNotFound
   }
@@ -16,10 +16,10 @@ class SpecHelper {
     let bundle = Bundle(for: SpecHelper.self)
     
     guard let path = bundle.path(forResource: name, ofType: nil) else {
-      throw Error.fileNotFound
+      throw SpecHelperError.fileNotFound
     }
     
-    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe)
+    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe)
     
     return data
   }

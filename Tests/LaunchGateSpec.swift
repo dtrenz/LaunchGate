@@ -25,13 +25,13 @@ class LaunchGateSpec: QuickSpec {
         expect(launchGate).to(beNil())
       }
       
-      it("creates a NSURL from the configURI") {
+      it("creates a URL from the configURI") {
         let launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)
         
         expect(launchGate!.configurationFileURL.absoluteString) == configURI
       }
       
-      it("creates a NSURL from the appStoreURI") {
+      it("creates a URL from the appStoreURI") {
         let launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)
         
         expect(launchGate!.updateURL.absoluteString) == appStoreURI
@@ -65,11 +65,11 @@ class LaunchGateSpec: QuickSpec {
       let jsonData = try! SpecHelper.loadFixture("config.json")
 
       class MockRemoteFileManager: RemoteFileManager {
-        var testData: NSData!
+        var testData: Data!
         
         var fetchRemoteFileWasCalled = false
 
-        override func fetchRemoteFile(_ callback: (NSData) -> Void) {
+        override func fetchRemoteFile(_ callback: @escaping (Data) -> Void) {
           fetchRemoteFileWasCalled = true
           
           callback(testData)
@@ -79,7 +79,7 @@ class LaunchGateSpec: QuickSpec {
       var mockRemoteFileManager: MockRemoteFileManager!
       
       beforeEach {
-        mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: NSURL())
+        mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: URL(string: "")!)
         mockRemoteFileManager.testData = jsonData
       }
 
@@ -94,10 +94,10 @@ class LaunchGateSpec: QuickSpec {
       context("when the configuration JSON is downloaded") {
         
         class MockParser: LaunchGateParser {
-          var testData: NSData!
+          var testData: Data!
           var parseWasCalledWithJSON = false
           
-          func parse(_ jsonData: NSData) -> LaunchGateConfiguration? {
+          func parse(_ jsonData: Data) -> LaunchGateConfiguration? {
             if jsonData == testData {
               parseWasCalledWithJSON = true
             }
@@ -157,8 +157,8 @@ class LaunchGateSpec: QuickSpec {
         var displayOptionalUpdateDialogWasCalled = false
         
         override func displayAlertDialog(_ configObject: DialogManager.RememberableDialogSubject, blocking: Bool) { displayAlertDialogWasCalled = true }
-        override func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: NSURL) { displayOptionalUpdateDialogWasCalled = true }
-        override func displayRequiredUpdateDialog(_ updateConfig: Dialogable, updateURL: NSURL) { displayRequiredUpdateDialogWasCalled = true }
+        override func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: URL) { displayOptionalUpdateDialogWasCalled = true }
+        override func displayRequiredUpdateDialog(_ updateConfig: Dialogable, updateURL: URL) { displayRequiredUpdateDialogWasCalled = true }
       }
       
       var launchGate: MockLaunchGate!

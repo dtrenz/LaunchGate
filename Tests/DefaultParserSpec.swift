@@ -8,7 +8,7 @@ class DefaultParserSpec: QuickSpec {
     
     describe("#parse") {
       
-      var jsonData: NSData!
+      var jsonData: Data!
       var parser: LaunchGateParser!
       
       beforeEach {

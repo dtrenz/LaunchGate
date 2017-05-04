@@ -15,7 +15,7 @@ class DialogManagerSpec: QuickSpec {
           var createAlertControllerWasCalledWithAlert = false
           
           override func createAlertController(_ type: DialogManager.DialogType, message: String) -> UIAlertController {
-            if case let .Alert(blocking) = type, blocking == testAlert.blocking && message == testAlert.message {
+            if case let .alert(blocking) = type, blocking == testAlert.blocking && message == testAlert.message {
               createAlertControllerWasCalledWithAlert = true
             }
             
@@ -39,7 +39,7 @@ class DialogManagerSpec: QuickSpec {
     describe("dialog memory logic ") {
       
       class MockViewController: UIViewController {
-        override func presentViewController(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+        override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
           completion!()
         }
       }
@@ -82,7 +82,7 @@ class DialogManagerSpec: QuickSpec {
           
           Memory.forget(update)
           
-          dialogManager.displayOptionalUpdateDialog(update, updateURL: NSURL())
+            dialogManager.displayOptionalUpdateDialog(update, updateURL: URL(string: "")!)
           
           expect(Memory.contains(update)).toEventually(beTrue())
         }
@@ -94,7 +94,7 @@ class DialogManagerSpec: QuickSpec {
           
           Memory.forget(update)
           
-          dialogManager.displayRequiredUpdateDialog(update, updateURL: NSURL())
+            dialogManager.displayRequiredUpdateDialog(update, updateURL: URL(string: "")!)
           
           expect(Memory.contains(update)).toEventually(beFalse())
         }
