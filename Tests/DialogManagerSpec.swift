@@ -82,7 +82,7 @@ class DialogManagerSpec: QuickSpec {
           
           Memory.forget(update)
           
-            dialogManager.displayOptionalUpdateDialog(update, updateURL: URL(string: "")!)
+            dialogManager.displayOptionalUpdateDialog(update, updateURL: URL(string: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Example/Example/example.json")!)
           
           expect(Memory.contains(update)).toEventually(beTrue())
         }
@@ -94,7 +94,7 @@ class DialogManagerSpec: QuickSpec {
           
           Memory.forget(update)
           
-            dialogManager.displayRequiredUpdateDialog(update, updateURL: URL(string: "")!)
+            dialogManager.displayRequiredUpdateDialog(update, updateURL: URL(string: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Example/Example/example.json")!)
           
           expect(Memory.contains(update)).toEventually(beFalse())
         }

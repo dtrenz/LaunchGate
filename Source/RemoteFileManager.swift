@@ -26,9 +26,8 @@ class RemoteFileManager {
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
-      guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-        print("LaunchGate - Request returned a status code other than 2xx.")
-        return
+      if let response = response {
+        print("LaunchGate - Error because there is no response \(response.debugDescription)")
       }
       guard let data = data else {
         print("LaunchGate — Error: Remote configuration file response was empty.")

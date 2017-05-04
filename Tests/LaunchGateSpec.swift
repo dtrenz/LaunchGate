@@ -79,7 +79,7 @@ class LaunchGateSpec: QuickSpec {
       var mockRemoteFileManager: MockRemoteFileManager!
       
       beforeEach {
-        mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: URL(string: "")!)
+        mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: URL(string: "https://raw.githubusercontent.com/dtrenz/LaunchGate/master/example.json")!)
         mockRemoteFileManager.testData = jsonData
       }
 
@@ -182,25 +182,31 @@ class LaunchGateSpec: QuickSpec {
         }
         
       }
-      
-      context("when the app is elligible for an optional update") {
         
+       context("when the app is elligible for an optional update") {
+                
         it("displays an optional update dialog") {
-          let optionalUpdate = UpdateConfiguration(version: "1.2", message: "Optional update availabe.")
-          config.optionalUpdate = optionalUpdate
-          Memory.forget(optionalUpdate!)
-          
-          launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
-          
+            let optionalUpdate = UpdateConfiguration(version: "1.2", message: "Optional update availabe.")
+            config.optionalUpdate = optionalUpdate
+            Memory.forget(optionalUpdate!)
+                    
+            launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
+                    
+                //            while(Memory.contains(optionalUpdate!)){
+                //                Memory.forget(optionalUpdate!)
+                //                if (!Memory.contains(optionalUpdate!)){
+                //
+                //                }
+                //            }
+                    
           expect(dialogManager.displayOptionalUpdateDialogWasCalled) == true
         }
-        
       }
       
       context("when an alert should be displayed") {
         
         it("displays an alert dialog") {
-          let alert = AlertConfiguration(message: "Hello world", blocking: false)
+          let alert = AlertConfiguration(message: "Hello world", blocking: true)
           config.alert = alert
           Memory.forget(alert!)
           
@@ -270,9 +276,10 @@ class LaunchGateSpec: QuickSpec {
         }
         
         context("when the app version is LESS THAN the update version") {
-          let appVersion = "1.1"
+          let appVersion = "1.0"
         
           it("returns true") {
+            Memory.forget(updateConfig)
             let result = launchGate.shouldShowOptionalUpdateDialog(updateConfig, appVersion: appVersion)
             
             expect(result) == true
