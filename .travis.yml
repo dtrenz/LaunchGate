@@ -15,7 +15,6 @@ notifications:
     on_success: change
 before_install:
   - rvm use $RVM_RUBY_VERSION
-  - gem install bundler
   - gem install cocoapods
   - gem install slather
   - pod install
