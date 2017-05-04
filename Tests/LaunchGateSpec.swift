@@ -192,13 +192,6 @@ class LaunchGateSpec: QuickSpec {
                     
             launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
                     
-                //            while(Memory.contains(optionalUpdate!)){
-                //                Memory.forget(optionalUpdate!)
-                //                if (!Memory.contains(optionalUpdate!)){
-                //
-                //                }
-                //            }
-                    
           expect(dialogManager.displayOptionalUpdateDialogWasCalled) == true
         }
       }
