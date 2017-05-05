@@ -26,8 +26,9 @@ class RemoteFileManager {
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
-      if let response = response {
-        print("LaunchGate - Error because there is no response \(response.debugDescription)")
+      guard response != nil else {
+        print("LaunchGate - Error because there is no response")
+        return
       }
       guard let data = data else {
         print("LaunchGate — Error: Remote configuration file response was empty.")
