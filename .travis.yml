@@ -15,9 +15,10 @@ notifications:
     on_success: change
 before_install:
   - rvm use $RVM_RUBY_VERSION
-  - gem install cocoapods
+  - bundle install
   - gem install xcpretty -N
   - gem install slather
+  - bundle update
   - brew update
   - brew install swiftlint || true
   - pod repo update
