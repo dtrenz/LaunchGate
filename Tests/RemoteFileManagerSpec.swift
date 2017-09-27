@@ -59,8 +59,9 @@ class RemoteFileManagerSpec: QuickSpec {
         
         override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
           dataTaskWithURLWasCalled = true
-          
-          completionHandler(testData, nil, nil)
+            
+          let urlResponse = HTTPURLResponse(url: URL(string: "https://www.google.es/")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+          completionHandler(testData, urlResponse, nil)
           
           return MockURLSessionDataTask()
         }
