@@ -1,7 +1,6 @@
 branches:
   only:
     - develop
-    - travisCIProblemBranch
     - master
 language: swift
 osx_image: xcode9
