@@ -199,8 +199,7 @@
 				C5478DD01C6968C800843BA3 /* UpdateConfiguration.swift */,
 				C5A878AA1C6A7E36004599C2 /* Supporting Files */,
 			);
-			name = Source;
-			path = LaunchGate;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		C5C04BD41C696767007397D0 /* Tests */ = {
@@ -216,8 +215,7 @@
 				C5A8786D1C6A74B9004599C2 /* Fixtures */,
 				C5A878AB1C6A7E3F004599C2 /* Supporting Files */,
 			);
-			name = Tests;
-			path = LaunchGateTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

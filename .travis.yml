@@ -3,7 +3,7 @@ branches:
     - develop
     - travisCIProblemBranch
     - master
-language: objective-c
+language: swift
 osx_image: xcode9
 notifications:
   slack:
@@ -15,13 +15,17 @@ notifications:
     on_success: change
 before_install:
   - rvm use $RVM_RUBY_VERSION
-  - bundle install
+  - gem install cocoapods
+  - gem install xcpretty -N
   - gem install slather
-  - pod repo update --verbose
+  - brew update
+  - brew install swiftlint || true
+  - pod repo update
   - pod install
 after_success:
   - slather
   - bash <(curl -s https://codecov.io/bash) -f cobertura.xml
 script:
-  - set -o pipefail && xcodebuild clean test -workspace LaunchGate.xcworkspace -scheme LaunchGate -destination 'platform=iOS Simulator,name=iPhone 6s' ONLY_ACTIVE_ARCH=YES | xcpretty
-  - pod lib lint
+  - set -o pipefail
+  - xcodebuild clean test -workspace LaunchGate.xcworkspace -scheme LaunchGate -destination 'platform=iOS Simulator,name=iPhone 6s' ONLY_ACTIVE_ARCH=YES | xcpretty
+  - swiftlint
