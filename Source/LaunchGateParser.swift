@@ -20,6 +20,6 @@ public protocol LaunchGateParser {
    - Returns: The resulting `LaunchGateRemoteConfiguration` object,
    or `nil` if parsing fails for any reason (i.e. malformed JSON response).
    */
-  func parse(jsonData: NSData) -> LaunchGateConfiguration?
+  func parse(_ jsonData: Data) -> LaunchGateConfiguration?
 
 }
