@@ -11,18 +11,18 @@ import Foundation
 
 class RemoteFileManager {
 
-  let remoteFileURL: NSURL
+  let remoteFileURL: URL
 
-  init(remoteFileURL: NSURL) {
+  init(remoteFileURL: URL) {
     self.remoteFileURL = remoteFileURL
   }
 
-  func fetchRemoteFile(callback: (NSData) -> Void) {
-    performRemoteFileRequest(NSURLSession.sharedSession(), url: remoteFileURL, responseHandler: callback)
+  func fetchRemoteFile(_ callback: @escaping (Data) -> Void) {
+    performRemoteFileRequest(URLSession.shared, url: remoteFileURL, responseHandler: callback)
   }
 
-  func performRemoteFileRequest(session: NSURLSession, url: NSURL, responseHandler: (data: NSData) -> Void) {
-    let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
+  func performRemoteFileRequest(_ session: URLSession, url: URL, responseHandler: @escaping (_ data: Data) -> Void) {
+    let task = session.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
@@ -31,9 +31,8 @@ class RemoteFileManager {
         print("LaunchGate — Error: Remote configuration file response was empty.")
         return
       }
-
-      responseHandler(data: data)
-    }
+      responseHandler(data)
+    }) 
 
     task.resume()
   }
