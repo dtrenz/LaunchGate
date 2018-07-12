@@ -272,7 +272,6 @@ class LaunchGateSpec: QuickSpec {
           let appVersion = "1.0"
         
           it("returns true") {
-            Memory.forget(updateConfig)
             let result = launchGate.shouldShowOptionalUpdateDialog(updateConfig, appVersion: appVersion)
             
             expect(result) == true
