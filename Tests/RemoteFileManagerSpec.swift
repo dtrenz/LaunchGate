@@ -55,12 +55,16 @@ class RemoteFileManagerSpec: QuickSpec {
       class MockURLSession: URLSession {
         var dataTaskWithURLWasCalled = false
         
-        let testData = Data()
+        let testData = "Hello, World!".data(using: .utf8)
         
         override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
           dataTaskWithURLWasCalled = true
             
-          let urlResponse = HTTPURLResponse(url: URL(string: "https://www.google.es/")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+          let urlResponse = HTTPURLResponse(url: url,
+                                            statusCode: 200,
+                                            httpVersion: nil,
+                                            headerFields: nil)
+
           completionHandler(testData, urlResponse, nil)
           
           return MockURLSessionDataTask()
@@ -81,13 +85,13 @@ class RemoteFileManagerSpec: QuickSpec {
         let remoteFileManager = RemoteFileManager(remoteFileURL: exampleURL)
         
         var callbackWasCalledWithData = false
-        
+
         remoteFileManager.performRemoteFileRequest(session, url: exampleURL) { (data) in
           if data == session.testData {
             callbackWasCalledWithData = true
           }
         }
-        
+
         expect(callbackWasCalledWithData) == true
       }
       
