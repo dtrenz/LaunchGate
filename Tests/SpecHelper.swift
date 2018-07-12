@@ -8,7 +8,6 @@ import Foundation
 class SpecHelper {
   
   enum SpecHelperError: Error {
-    case bundleNotFound
     case fileNotFound
   }
   
