@@ -8,12 +8,9 @@
 
 import Foundation
 
-
 struct Memory {
 
-  static var userPrefs: UserDefaults {
-    return UserDefaults.standard
-  }
+  static let userPrefs = UserDefaults.standard
 
   static func remember(_ item: Rememberable) {
     userPrefs.set(item.rememberString(), forKey: item.rememberKey())
@@ -24,11 +21,7 @@ struct Memory {
   }
 
   static func contains(_ item: Rememberable) -> Bool {
-    if let storedString = userPrefs.string(forKey: item.rememberKey()), storedString == item.rememberString() {
-      return true
-    }
-
-    return false
+    return userPrefs.object(forKey: item.rememberKey()) as? String == item.rememberString()
   }
 
 }
