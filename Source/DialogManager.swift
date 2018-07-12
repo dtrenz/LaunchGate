@@ -1,13 +1,12 @@
 //
 //  DialogManager.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 2/5/16.
 //
 //
 
 import Foundation
-
 
 protocol Dialogable {
   var message: String { get }
@@ -53,16 +52,16 @@ class DialogManager {
     let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
 
     switch type {
-      case let .alert(blocking):
+    case let .alert(blocking):
         if !blocking {
-          alertController.addAction(dismissActon())
+            alertController.addAction(dismissActon())
         }
 
-      case let .optionalUpdate(updateURL):
+    case let .optionalUpdate(updateURL):
         alertController.addAction(dismissActon())
         alertController.addAction(updateAction(updateURL))
 
-      case let .requiredUpdate(updateURL):
+    case let .requiredUpdate(updateURL):
         alertController.addAction(updateAction(updateURL))
     }
 

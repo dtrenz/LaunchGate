@@ -171,7 +171,7 @@ class LaunchGateSpec: QuickSpec {
         config = LaunchGateConfiguration()
       }
       
-      context("when the app is elligible for a required update") {
+      context("when the app is eligible for a required update") {
         
         it("displays a required update dialog") {
           config.requiredUpdate = UpdateConfiguration(version: "1.1", message: "Update required!")
@@ -183,13 +183,13 @@ class LaunchGateSpec: QuickSpec {
         
       }
         
-       context("when the app is elligible for an optional update") {
+       context("when the app is eligible for an optional update") {
                 
         it("displays an optional update dialog") {
             let optionalUpdate = UpdateConfiguration(version: "1.2", message: "Optional update availabe.")
             config.optionalUpdate = optionalUpdate
             Memory.forget(optionalUpdate!)
-                    
+
             launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
                     
           expect(dialogManager.displayOptionalUpdateDialogWasCalled) == true

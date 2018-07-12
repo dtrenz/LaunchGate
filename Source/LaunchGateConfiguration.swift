@@ -1,13 +1,12 @@
 //
 //  LaunchGateConfiguration
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 2/2/16.
 //
 //
 
 import Foundation
-
 
 /// The configuration object that should be created as the result of parsing the remote configuration file.
 public struct LaunchGateConfiguration {

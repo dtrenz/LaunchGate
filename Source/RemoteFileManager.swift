@@ -1,13 +1,12 @@
 //
 //  RemoteFileManager.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 1/20/16.
 //
 //
 
 import Foundation
-
 
 class RemoteFileManager {
 

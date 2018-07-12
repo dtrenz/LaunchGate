@@ -1,6 +1,6 @@
 //
 //  DefaultParser.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 2/4/16.
 //
@@ -19,18 +19,18 @@ class DefaultParser: LaunchGateParser {
     case unableToParseRequiredUpdate
 
     var description: String {
-      switch self {
+        switch self {
         case .unableToParseConfigurationObject:
-          return "Unable to parse the configuration object (\"ios\") from JSON file."
+            return "Unable to parse the configuration object (\"ios\") from JSON file."
         case .unableToParseAlert:
-          return "Unable to parse the alert configuration from JSON file."
+            return "Unable to parse the alert configuration from JSON file."
         case .unableToParseOptionalUpdate:
-          return "Unable to parse the optional update configuration from JSON file."
+            return "Unable to parse the optional update configuration from JSON file."
         case .unableToParseRequiredUpdate:
-          return "Unable to parse the required update configuration from JSON file."
-      }
+            return "Unable to parse the required update configuration from JSON file."
+        }
     }
-  }
+    }
 
   func parse(_ jsonData: Data) -> LaunchGateConfiguration? {
     do {

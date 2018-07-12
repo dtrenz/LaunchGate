@@ -4,6 +4,7 @@ use_frameworks!
 pod 'SwiftLint'
 
 target 'LaunchGateTests' do
+  platform :ios, '8.3'
   inherit! :search_paths
   pod 'Quick'
   pod 'Nimble'
@@ -11,6 +12,7 @@ target 'LaunchGateTests' do
 end
 
 target 'LaunchGate' do
+    platform :ios, '8.3'
     inherit! :search_paths
     pod 'SwiftLint'
 end

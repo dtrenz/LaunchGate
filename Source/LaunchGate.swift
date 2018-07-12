@@ -1,6 +1,6 @@
 //
 //  LaunchGate.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 1/19/16.
 //
@@ -10,7 +10,6 @@ import Foundation
 
 /// Custom internal error type
 typealias LaunchGateError = Error & CustomStringConvertible
-
 
 open class LaunchGate {
 

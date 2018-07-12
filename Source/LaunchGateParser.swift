@@ -1,13 +1,12 @@
 //
 //  LaunchGateParser.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 2/4/16.
 //
 //
 
 import Foundation
-
 
 /// Protocol to which any configuration parser must conform.
 public protocol LaunchGateParser {

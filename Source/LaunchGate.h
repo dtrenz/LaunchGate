@@ -13,7 +13,3 @@ FOUNDATION_EXPORT double LaunchGateVersionNumber;
 
 //! Project version string for LaunchGate.
 FOUNDATION_EXPORT const unsigned char LaunchGateVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <LaunchGate/PublicHeader.h>
-
-
