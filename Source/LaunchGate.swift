@@ -14,7 +14,7 @@ typealias LaunchGateError = Error & CustomStringConvertible
 open class LaunchGate {
 
   /// Parser to use when parsing the configuration file
-  open var parser: LaunchGateParser!
+  public var parser: LaunchGateParser!
 
   /// URI for the configuration file
   var configurationFileURL: URL!

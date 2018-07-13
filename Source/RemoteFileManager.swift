@@ -21,7 +21,7 @@ class RemoteFileManager {
   }
 
   func performRemoteFileRequest(_ session: URLSession, url: URL, responseHandler: @escaping (_ data: Data) -> Void) {
-    let task = session.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
+    let task = session.dataTask(with: url) { data, response, error in
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
@@ -35,7 +35,7 @@ class RemoteFileManager {
       }
 
       responseHandler(data)
-    })
+    }
 
     task.resume()
   }

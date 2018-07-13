@@ -68,7 +68,7 @@ class DefaultParser: LaunchGateParser {
     return nil
   }
 
-  fileprivate static func parseAlert(_ json: JSON) throws -> AlertConfiguration? {
+  private static func parseAlert(_ json: JSON) throws -> AlertConfiguration? {
     guard let message = json["message"] as? String else { throw Error.unableToParseAlert }
     guard let blocking = json["blocking"] as? Bool else { throw Error.unableToParseAlert }
 
