@@ -75,14 +75,14 @@ class DefaultParser: LaunchGateParser {
     return AlertConfiguration(message: message, blocking: blocking)
   }
 
-  fileprivate static func parseOptionalUpdate(_ json: JSON) throws -> UpdateConfiguration? {
+  private static func parseOptionalUpdate(_ json: JSON) throws -> UpdateConfiguration? {
     guard let version = json["optionalVersion"] as? String else { throw Error.unableToParseOptionalUpdate }
     guard let message = json["message"] as? String else { throw Error.unableToParseOptionalUpdate }
 
     return UpdateConfiguration(version: version, message: message)
   }
 
-  fileprivate static func parseRequiredUpdate(_ json: JSON) throws -> UpdateConfiguration? {
+  private static func parseRequiredUpdate(_ json: JSON) throws -> UpdateConfiguration? {
     guard let version = json["minimumVersion"] as? String else { throw Error.unableToParseRequiredUpdate }
     guard let message = json["message"] as? String else { throw Error.unableToParseRequiredUpdate }
 

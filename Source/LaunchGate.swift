@@ -11,7 +11,7 @@ import Foundation
 /// Custom internal error type
 typealias LaunchGateError = Error & CustomStringConvertible
 
-open class LaunchGate {
+public class LaunchGate {
 
   /// Parser to use when parsing the configuration file
   public var parser: LaunchGateParser!
@@ -49,7 +49,7 @@ open class LaunchGate {
   }
 
   /// Check the configuration file and perform any appropriate action.
-  open func check() {
+  public func check() {
     performCheck(RemoteFileManager(remoteFileURL: (configurationFileURL as URL)))
   }
 
