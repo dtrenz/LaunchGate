@@ -6,7 +6,7 @@ import Nimble
 class RemoteFileManagerSpec: QuickSpec {
   override func spec() {
 
-    let exampleURL = NSURL(string: "https://www.launchgate.com/update.json")!
+    let exampleURL = URL(string: "https://www.launchgate.com/update.json")!
 
     describe("#init") {
 
@@ -24,7 +24,7 @@ class RemoteFileManagerSpec: QuickSpec {
         var performRemoteFileRequestWasCalled = false
         var performRemoteFileRequestWasCalledWithRemoteFileURI = false
 
-        override func performRemoteFileRequest(session: NSURLSession, url: NSURL, responseHandler: (data: NSData) -> Void) {
+        override func performRemoteFileRequest(_ session: URLSession, url: URL, responseHandler: @escaping (_ data: Data) -> Void) {
           if url.absoluteString == "https://www.launchgate.com/update.json" {
             performRemoteFileRequestWasCalledWithRemoteFileURI = true
           }
@@ -48,19 +48,24 @@ class RemoteFileManagerSpec: QuickSpec {
       // only mocking this class for verification in the callbackWasCalledWithData check below.
       class MockData: NSData {}
       
-      class MockURLSessionDataTask: NSURLSessionDataTask {
+      class MockURLSessionDataTask: URLSessionDataTask {
         override func resume() {} // stub
       }
       
-      class MockURLSession: NSURLSession {
+      class MockURLSession: URLSession {
         var dataTaskWithURLWasCalled = false
         
-        let testData = MockData()
+        let testData = "Hello, World!".data(using: .utf8)
         
-        override func dataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
+        override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
           dataTaskWithURLWasCalled = true
-          
-          completionHandler(testData, nil, nil)
+            
+          let urlResponse = HTTPURLResponse(url: url,
+                                            statusCode: 200,
+                                            httpVersion: nil,
+                                            headerFields: nil)
+
+          completionHandler(testData, urlResponse, nil)
           
           return MockURLSessionDataTask()
         }
@@ -80,13 +85,13 @@ class RemoteFileManagerSpec: QuickSpec {
         let remoteFileManager = RemoteFileManager(remoteFileURL: exampleURL)
         
         var callbackWasCalledWithData = false
-        
+
         remoteFileManager.performRemoteFileRequest(session, url: exampleURL) { (data) in
-          if data === session.testData {
+          if data == session.testData {
             callbackWasCalledWithData = true
           }
         }
-        
+
         expect(callbackWasCalledWithData) == true
       }
       

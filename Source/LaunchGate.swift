@@ -1,6 +1,6 @@
 //
 //  LaunchGate.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 1/19/16.
 //
@@ -9,8 +9,7 @@
 import Foundation
 
 /// Custom internal error type
-typealias LaunchGateError = protocol<ErrorType, CustomStringConvertible>
-
+typealias LaunchGateError = Error & CustomStringConvertible
 
 public class LaunchGate {
 
@@ -18,10 +17,10 @@ public class LaunchGate {
   public var parser: LaunchGateParser!
 
   /// URI for the configuration file
-  var configurationFileURL: NSURL!
+  var configurationFileURL: URL!
 
   /// App Store URI ("itms-apps://itunes.apple.com/...") for the current app
-  var updateURL: NSURL!
+  var updateURL: URL!
 
   /// Manager object for the various alert dialogs
   var dialogManager: DialogManager!
@@ -30,7 +29,7 @@ public class LaunchGate {
 
   /**
   Failable initializer. If either the `configURI` or `appStoreURI` are unable to be
-  converted into an `NSURL` (i.e. containing illegal URL characters) this initializer
+  converted into an `URL` (i.e. containing illegal URL characters) this initializer
   will return `nil`.
 
   - Parameters:
@@ -40,8 +39,8 @@ public class LaunchGate {
   - Returns: A `LaunchGate` instance or `nil`
   */
   public init?(configURI: String, appStoreURI: String) {
-    guard let configURL = NSURL(string: configURI) else { return nil }
-    guard let appStoreURL = NSURL(string: appStoreURI) else { return nil }
+    guard let configURL = URL(string: configURI) else { return nil }
+    guard let appStoreURL = URL(string: appStoreURI) else { return nil }
 
     configurationFileURL = configURL
     updateURL = appStoreURL
@@ -51,7 +50,7 @@ public class LaunchGate {
 
   /// Check the configuration file and perform any appropriate action.
   public func check() {
-    performCheck(RemoteFileManager(remoteFileURL: configurationFileURL))
+    performCheck(RemoteFileManager(remoteFileURL: (configurationFileURL as URL)))
   }
 
   // MARK: - Internal API
@@ -62,7 +61,7 @@ public class LaunchGate {
 
   - Parameter remoteFileManager: The `RemoteFileManager` to use to fetch the configuration file.
   */
-  func performCheck(remoteFileManager: RemoteFileManager) {
+  func performCheck(_ remoteFileManager: RemoteFileManager) {
     remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
       if let config = self.parser.parse(jsonData) {
         self.displayDialogIfNecessary(config, dialogManager: self.dialogManager)
@@ -77,12 +76,12 @@ public class LaunchGate {
      - config:        Configuration parsed from remote configuration file.
      - dialogManager: Manager object for the various alert dialogs
    */
-  func displayDialogIfNecessary(config: LaunchGateConfiguration, dialogManager: DialogManager) {
-    if let reqUpdate = config.requiredUpdate, appVersion = currentAppVersion() {
+  func displayDialogIfNecessary(_ config: LaunchGateConfiguration, dialogManager: DialogManager) {
+    if let reqUpdate = config.requiredUpdate, let appVersion = currentAppVersion() {
       if shouldShowRequiredUpdateDialog(reqUpdate, appVersion: appVersion) {
         dialogManager.displayRequiredUpdateDialog(reqUpdate, updateURL: updateURL)
       }
-    } else if let optUpdate = config.optionalUpdate, appVersion = currentAppVersion() {
+    } else if let optUpdate = config.optionalUpdate, let appVersion = currentAppVersion() {
       if shouldShowOptionalUpdateDialog(optUpdate, appVersion: appVersion) {
         dialogManager.displayOptionalUpdateDialog(optUpdate, updateURL: updateURL)
       }
@@ -100,7 +99,7 @@ public class LaunchGate {
 
    - Returns: `true`, if an alert dialog should be displayed; `false`, if not.
    */
-  func shouldShowAlertDialog(alertConfig: AlertConfiguration) -> Bool {
+  func shouldShowAlertDialog(_ alertConfig: AlertConfiguration) -> Bool {
     return alertConfig.blocking || alertConfig.isNotRemembered()
   }
 
@@ -111,7 +110,7 @@ public class LaunchGate {
 
    - Returns: `true`, if an optional update should be displayed; `false`, if not.
    */
-  func shouldShowOptionalUpdateDialog(updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
+  func shouldShowOptionalUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
     guard updateConfig.isNotRemembered() else { return false }
 
     return appVersion < updateConfig.version
@@ -124,12 +123,12 @@ public class LaunchGate {
 
    - Returns: `true`, if a required update dialog should be displayed; `false`, if not.
    */
-  func shouldShowRequiredUpdateDialog(updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
+  func shouldShowRequiredUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
     return appVersion < updateConfig.version
   }
 
   func currentAppVersion() -> String? {
-    return NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String
+    return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
   }
 
 }

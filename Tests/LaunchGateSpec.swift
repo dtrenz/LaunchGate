@@ -25,13 +25,13 @@ class LaunchGateSpec: QuickSpec {
         expect(launchGate).to(beNil())
       }
       
-      it("creates a NSURL from the configURI") {
+      it("creates a URL from the configURI") {
         let launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)
         
         expect(launchGate!.configurationFileURL.absoluteString) == configURI
       }
       
-      it("creates a NSURL from the appStoreURI") {
+      it("creates a URL from the appStoreURI") {
         let launchGate = LaunchGate(configURI: configURI, appStoreURI: appStoreURI)
         
         expect(launchGate!.updateURL.absoluteString) == appStoreURI
@@ -44,7 +44,7 @@ class LaunchGateSpec: QuickSpec {
       class MockLaunchGate: LaunchGate {
         var performCheckWasCalledWithRemoteFileManager = false
         
-        override func performCheck(remoteFileManager: RemoteFileManager) {
+        override func performCheck(_ remoteFileManager: RemoteFileManager) {
           if remoteFileManager.remoteFileURL.absoluteString == "https://www.example.com/example.json" {
             performCheckWasCalledWithRemoteFileManager = true
           }
@@ -65,11 +65,11 @@ class LaunchGateSpec: QuickSpec {
       let jsonData = try! SpecHelper.loadFixture("config.json")
 
       class MockRemoteFileManager: RemoteFileManager {
-        var testData: NSData!
+        var testData: Data!
         
         var fetchRemoteFileWasCalled = false
 
-        override func fetchRemoteFile(callback: (NSData) -> Void) {
+        override func fetchRemoteFile(_ callback: @escaping (Data) -> Void) {
           fetchRemoteFileWasCalled = true
           
           callback(testData)
@@ -79,7 +79,7 @@ class LaunchGateSpec: QuickSpec {
       var mockRemoteFileManager: MockRemoteFileManager!
       
       beforeEach {
-        mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: NSURL())
+        mockRemoteFileManager = MockRemoteFileManager(remoteFileURL: URL(string: "https://raw.githubusercontent.com/dtrenz/LaunchGate/master/example.json")!)
         mockRemoteFileManager.testData = jsonData
       }
 
@@ -94,10 +94,10 @@ class LaunchGateSpec: QuickSpec {
       context("when the configuration JSON is downloaded") {
         
         class MockParser: LaunchGateParser {
-          var testData: NSData!
+          var testData: Data!
           var parseWasCalledWithJSON = false
           
-          func parse(jsonData: NSData) -> LaunchGateConfiguration? {
+          func parse(_ jsonData: Data) -> LaunchGateConfiguration? {
             if jsonData == testData {
               parseWasCalledWithJSON = true
             }
@@ -128,7 +128,7 @@ class LaunchGateSpec: QuickSpec {
             
             var displayDialogWasCalled = false
             
-            override func displayDialogIfNecessary(config: LaunchGateConfiguration, dialogManager: DialogManager) {
+            override func displayDialogIfNecessary(_ config: LaunchGateConfiguration, dialogManager: DialogManager) {
               displayDialogWasCalled = true
             }
           }
@@ -156,9 +156,9 @@ class LaunchGateSpec: QuickSpec {
         var displayRequiredUpdateDialogWasCalled = false
         var displayOptionalUpdateDialogWasCalled = false
         
-        override func displayAlertDialog(configObject: DialogManager.RememberableDialogSubject, blocking: Bool) { displayAlertDialogWasCalled = true }
-        override func displayOptionalUpdateDialog(updateConfig: RememberableDialogSubject, updateURL: NSURL) { displayOptionalUpdateDialogWasCalled = true }
-        override func displayRequiredUpdateDialog(updateConfig: Dialogable, updateURL: NSURL) { displayRequiredUpdateDialogWasCalled = true }
+        override func displayAlertDialog(_ configObject: DialogManager.RememberableDialogSubject, blocking: Bool) { displayAlertDialogWasCalled = true }
+        override func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: URL) { displayOptionalUpdateDialogWasCalled = true }
+        override func displayRequiredUpdateDialog(_ updateConfig: Dialogable, updateURL: URL) { displayRequiredUpdateDialogWasCalled = true }
       }
       
       var launchGate: MockLaunchGate!
@@ -171,7 +171,7 @@ class LaunchGateSpec: QuickSpec {
         config = LaunchGateConfiguration()
       }
       
-      context("when the app is elligible for a required update") {
+      context("when the app is eligible for a required update") {
         
         it("displays a required update dialog") {
           config.requiredUpdate = UpdateConfiguration(version: "1.1", message: "Update required!")
@@ -182,25 +182,24 @@ class LaunchGateSpec: QuickSpec {
         }
         
       }
-      
-      context("when the app is elligible for an optional update") {
         
+       context("when the app is eligible for an optional update") {
+                
         it("displays an optional update dialog") {
-          let optionalUpdate = UpdateConfiguration(version: "1.2", message: "Optional update availabe.")
-          config.optionalUpdate = optionalUpdate
-          Memory.forget(optionalUpdate!)
-          
-          launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
-          
+            let optionalUpdate = UpdateConfiguration(version: "1.2", message: "Optional update availabe.")
+            config.optionalUpdate = optionalUpdate
+            Memory.forget(optionalUpdate!)
+
+            launchGate.displayDialogIfNecessary(config, dialogManager: dialogManager)
+                    
           expect(dialogManager.displayOptionalUpdateDialogWasCalled) == true
         }
-        
       }
       
       context("when an alert should be displayed") {
         
         it("displays an alert dialog") {
-          let alert = AlertConfiguration(message: "Hello world", blocking: false)
+          let alert = AlertConfiguration(message: "Hello world", blocking: true)
           config.alert = alert
           Memory.forget(alert!)
           
@@ -270,7 +269,7 @@ class LaunchGateSpec: QuickSpec {
         }
         
         context("when the app version is LESS THAN the update version") {
-          let appVersion = "1.1"
+          let appVersion = "1.0"
         
           it("returns true") {
             let result = launchGate.shouldShowOptionalUpdateDialog(updateConfig, appVersion: appVersion)

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   lazy var launchGate: LaunchGate? = {
     let launchGate = LaunchGate(
-      configURI: "https://raw.githubusercontent.com/dtrenz/LaunchGate/master/example.json",
+      configURI: "https://raw.githubusercontent.com/dtrenz/LaunchGate/master/Example/Example/example.json",
       appStoreURI: "itms-apps://itunes.apple.com/us/app/wikipedia-mobile/id324715238"
     )
     
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return launchGate
   }()
   
-  func applicationDidBecomeActive(application: UIApplication) {
+  func applicationDidBecomeActive(_ application: UIApplication) {
     launchGate?.check()
   }
 

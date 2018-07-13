@@ -1,12 +1,11 @@
 //
 //  AlertConfiguration.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 2/8/16.
 //
 
 import Foundation
-
 
 public struct AlertConfiguration: Dialogable, Rememberable {
 

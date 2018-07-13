@@ -14,15 +14,15 @@ class DialogManagerSpec: QuickSpec {
           var testAlert: AlertConfiguration!
           var createAlertControllerWasCalledWithAlert = false
           
-          override func createAlertController(type: DialogManager.DialogType, message: String) -> UIAlertController {
-            if case let .Alert(blocking) = type where blocking == testAlert.blocking && message == testAlert.message {
+          override func createAlertController(_ type: DialogManager.DialogType, message: String) -> UIAlertController {
+            if case let .alert(blocking) = type, blocking == testAlert.blocking && message == testAlert.message {
               createAlertControllerWasCalledWithAlert = true
             }
             
             return UIAlertController()
           }
           
-          override func displayAlertController(alert: UIAlertController, completion: (() -> Void)?) {}  // stub
+          override func displayAlertController(_ alert: UIAlertController, completion: (() -> Void)?) {}  // stub
         }
         
         let alert = AlertConfiguration(message: "Hello World", blocking: true)!
@@ -39,7 +39,7 @@ class DialogManagerSpec: QuickSpec {
     describe("dialog memory logic ") {
       
       class MockViewController: UIViewController {
-        override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+        override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
           completion!()
         }
       }
@@ -82,7 +82,7 @@ class DialogManagerSpec: QuickSpec {
           
           Memory.forget(update)
           
-          dialogManager.displayOptionalUpdateDialog(update, updateURL: NSURL())
+            dialogManager.displayOptionalUpdateDialog(update, updateURL: URL(string: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Example/Example/example.json")!)
           
           expect(Memory.contains(update)).toEventually(beTrue())
         }
@@ -94,7 +94,7 @@ class DialogManagerSpec: QuickSpec {
           
           Memory.forget(update)
           
-          dialogManager.displayRequiredUpdateDialog(update, updateURL: NSURL())
+            dialogManager.displayRequiredUpdateDialog(update, updateURL: URL(string: "https://raw.githubusercontent.com/dtrenz/LaunchGate/develop/Example/Example/example.json")!)
           
           expect(Memory.contains(update)).toEventually(beFalse())
         }

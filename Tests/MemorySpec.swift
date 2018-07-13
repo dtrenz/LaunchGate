@@ -18,7 +18,7 @@ class MemorySpec: QuickSpec {
         
         Memory.remember(item)
         
-        expect(NSUserDefaults.standardUserDefaults().stringForKey(item.rememberKey())) == item.rememberString()
+        expect(UserDefaults.standard.string(forKey: item.rememberKey())) == item.rememberString()
       }
     }
     
@@ -29,7 +29,7 @@ class MemorySpec: QuickSpec {
         
         Memory.forget(item)
         
-        expect(NSUserDefaults.standardUserDefaults().stringForKey(item.rememberKey())).to(beNil())
+        expect(UserDefaults.standard.string(forKey: item.rememberKey())).to(beNil())
       }
     }
     

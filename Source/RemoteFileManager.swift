@@ -1,6 +1,6 @@
 //
 //  RemoteFileManager.swift
-//  Pods
+//  LaunchGate
 //
 //  Created by Dan Trenz on 1/20/16.
 //
@@ -8,31 +8,33 @@
 
 import Foundation
 
-
 class RemoteFileManager {
 
-  let remoteFileURL: NSURL
+  let remoteFileURL: URL
 
-  init(remoteFileURL: NSURL) {
+  init(remoteFileURL: URL) {
     self.remoteFileURL = remoteFileURL
   }
 
-  func fetchRemoteFile(callback: (NSData) -> Void) {
-    performRemoteFileRequest(NSURLSession.sharedSession(), url: remoteFileURL, responseHandler: callback)
+  func fetchRemoteFile(_ callback: @escaping (Data) -> Void) {
+    performRemoteFileRequest(URLSession.shared, url: remoteFileURL, responseHandler: callback)
   }
 
-  func performRemoteFileRequest(session: NSURLSession, url: NSURL, responseHandler: (data: NSData) -> Void) {
-    let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
+  func performRemoteFileRequest(_ session: URLSession, url: URL, responseHandler: @escaping (_ data: Data) -> Void) {
+    let task = session.dataTask(with: url) { data, response, error in
       if let error = error {
         print("LaunchGate — Error: \(error.localizedDescription)")
       }
-
+      guard response != nil else {
+        print("LaunchGate - Error because there is no response")
+        return
+      }
       guard let data = data else {
         print("LaunchGate — Error: Remote configuration file response was empty.")
         return
       }
 
-      responseHandler(data: data)
+      responseHandler(data)
     }
 
     task.resume()
