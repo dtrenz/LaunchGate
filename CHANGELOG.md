@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 `LaunchGate` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1](https://github.com/dtrenz/LaunchGate/releases/tag/1.1)
+Released on 2018-07-17
+
+#### Added
+- Swift 4.1 support
+- Xcode 9.4 support
+
+**Credit:** @SlaunchaMan + @RLRG
+
 ## [1.0.2](https://github.com/dtrenz/LaunchGate/releases/tag/1.0.2)
 Released on 2016-02-18.
 
@@ -9,7 +18,6 @@ Released on 2016-02-18.
 - More test coverage
 - Cobertura coverage report generation via Slather
 - Codecov.io coverage report CI
-
 
 #### Fixed
 - Previously, all configuration items (alert, optionalUpdate,
