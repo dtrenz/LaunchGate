@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/dtrenz'
   s.platform         = :ios, '8.3'
   s.requires_arc     = true
-  s.source_files     = 'Source/**/*'
+  s.source_files     = 'Source/**/*.swift'
   s.frameworks       = 'UIKit'
   s.swift_version    = '4.1'
 end
