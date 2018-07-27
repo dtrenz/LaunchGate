@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "LaunchGate"
-  s.version          = "1.1"
+  s.version          = "1.1.1"
   s.summary          = <<-SUMMARY
                        LaunchGate makes it easy to let users know when an update to your app is available.
                        SUMMARY
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/dtrenz'
   s.platform         = :ios, '8.3'
   s.requires_arc     = true
-  s.source_files     = 'Source/**/*'
+  s.source_files     = 'Source/**/*.swift'
   s.frameworks       = 'UIKit'
   s.swift_version    = '4.1'
 end
