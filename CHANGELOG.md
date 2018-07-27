@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 `LaunchGate` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.1](https://github.com/dtrenz/LaunchGate/releases/tag/1.1.1)
+Released on 2018-07-27
+
+#### Fixed
+- Resolved info.plist collision issue.
+
+**Credits:** @ibrahimQL
+
 ## [1.1](https://github.com/dtrenz/LaunchGate/releases/tag/1.1)
 Released on 2018-07-17
 
@@ -9,7 +17,7 @@ Released on 2018-07-17
 - Swift 4.1 support
 - Xcode 9.4 support
 
-**Credit:** @SlaunchaMan + @RLRG
+**Credits:** @SlaunchaMan + @RLRG
 
 ## [1.0.2](https://github.com/dtrenz/LaunchGate/releases/tag/1.0.2)
 Released on 2016-02-18.
