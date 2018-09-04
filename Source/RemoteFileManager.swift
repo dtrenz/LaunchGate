@@ -13,6 +13,7 @@ class RemoteFileManager {
   let remoteFileURL: URL
 
   init(remoteFileURL: URL) {
+    print("✡️ [RemoteFileManager] remoteFileURL : \(remoteFileURL) ")
     self.remoteFileURL = remoteFileURL
   }
 
@@ -33,10 +34,8 @@ class RemoteFileManager {
         print("LaunchGate — Error: Remote configuration file response was empty.")
         return
       }
-
       responseHandler(data)
     }
-
     task.resume()
   }
 
