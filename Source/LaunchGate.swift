@@ -45,14 +45,14 @@ public class LaunchGate {
 
      - Returns: A `LaunchGate` instance or `nil`
      */
-    public init?(configURI: String, appStoreURI: String, stringHandler: StringHandler? = nil) {
+    public init?(configURI: String, appStoreURI: String, stringHandler: StringHandler? = nil, dialogDelegate: DialogManagerDelegate? = nil) {
         guard let configURL = URL(string: configURI) else { return nil }
         guard let appStoreURL = URL(string: appStoreURI) else { return nil }
 
         configurationFileURL = configURL
         updateURL = appStoreURL
         parser = DefaultParser()
-        dialogManager = DialogManager(withStringHandler: stringHandler)
+        dialogManager = DialogManager(withStringHandler: stringHandler, andDelegate: dialogDelegate)
     }
 
     public func setDelegate(_ delegate: LaunchGateDelegate?) {
@@ -61,7 +61,7 @@ public class LaunchGate {
 
     /// Check the configuration file and perform any appropriate action.
     public func check() {
-        performCheck(RemoteFileManager(remoteFileURL: (configurationFileURL as URL)))
+        performCheck(RemoteFileManager(remoteFileURL: (configurationFileURL as URL), andDelegate: self))
     }
 
     // MARK: - Internal API
@@ -75,7 +75,11 @@ public class LaunchGate {
     func performCheck(_ remoteFileManager: RemoteFileManager) {
         remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
             if let config = self.parser.parse(jsonData) {
+                print("⚪️ [LaunchGate] Config available for remote file : \(config)")
                 self.displayDialogIfNecessary(config, dialogManager: self.dialogManager)
+            } else {
+                print("⚪️ [LaunchGate] No config available for remote file")
+                self.delegate?.noUpdateHandler()
             }
         }
     }
@@ -91,17 +95,23 @@ public class LaunchGate {
         if let reqUpdate = config.requiredUpdate, let appVersion = currentAppVersion() {
             if shouldShowRequiredUpdateDialog(reqUpdate, appVersion: appVersion) {
                 dialogManager.displayRequiredUpdateDialog(reqUpdate, updateURL: updateURL)
+            } else {
+                delegate?.noUpdateHandler()
             }
         } else if let optUpdate = config.optionalUpdate, let appVersion = currentAppVersion() {
             if shouldShowOptionalUpdateDialog(optUpdate, appVersion: appVersion) {
                 dialogManager.displayOptionalUpdateDialog(optUpdate, updateURL: updateURL)
+            } else {
+                self.delegate?.noUpdateHandler()
             }
         } else if let alert = config.alert {
             if shouldShowAlertDialog(alert) {
                 dialogManager.displayAlertDialog(alert, blocking: alert.blocking)
+            } else {
+                self.delegate?.noUpdateHandler()
             }
         } else {
-            delegate?.noUpdateHandler()
+            self.delegate?.noUpdateHandler()
         }
     }
 
@@ -144,4 +154,11 @@ public class LaunchGate {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 
+}
+
+extension LaunchGate: RemoteFileManagerDelegate {
+    func errorWithRemoteFileHandler() {
+        print("🔴 errorWithRemoteFileHandler()")
+        delegate?.noUpdateHandler()
+    }
 }

@@ -8,6 +8,10 @@
 
 import Foundation
 
+public protocol DialogManagerDelegate: class {
+    func didDismissAlertView()
+}
+
 // Localization of strings
 
 protocol Dialogable {
@@ -25,9 +29,11 @@ class DialogManager {
     }
 
     var stringHandler: StringHandler?
+    weak var delegate: DialogManagerDelegate?
 
-    init(withStringHandler stringHandler: StringHandler? = nil) {
+    init(withStringHandler stringHandler: StringHandler? = nil, andDelegate delegate: DialogManagerDelegate? = nil) {
         self.stringHandler = stringHandler
+        self.delegate = delegate
     }
 
     func displayAlertDialog(_ alertConfig: RememberableDialogSubject, blocking: Bool) {
@@ -100,7 +106,9 @@ class DialogManager {
     private func dismissActon() -> UIAlertAction {
         return UIAlertAction(
             title: NSLocalizedString(stringHandler?.dismissTitle ?? "Dismiss", comment: "Button title for dismissing the update AlertView"),
-            style: .default) { _ in }
+            style: .default) { _ in
+                self.delegate?.didDismissAlertView()
+        }
     }
 
     private func updateAction(_ updateURL: URL) -> UIAlertAction {
