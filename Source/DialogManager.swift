@@ -28,11 +28,12 @@ class DialogManager {
         case requiredUpdate(updateURL: URL)
     }
 
-    var stringHandler: StringHandler?
+    var stringHandler: WordingHandler?
     weak var delegate: DialogManagerDelegate?
 
-    init(withStringHandler stringHandler: StringHandler? = nil, andDelegate delegate: DialogManagerDelegate? = nil) {
-        self.stringHandler = stringHandler
+    init(withWordingHandler wordingHandler: WordingHandler? = nil,
+         andDelegate delegate: DialogManagerDelegate? = nil) {
+        self.stringHandler = wordingHandler
         self.delegate = delegate
     }
 

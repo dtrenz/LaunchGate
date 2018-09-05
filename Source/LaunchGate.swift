@@ -32,7 +32,7 @@ public class LaunchGate {
 
     // MARK: - Public API
 
-    weak var delegate: LaunchGateDelegate?
+    open weak var delegate: LaunchGateDelegate?
 
     /**
      Failable initializer. If either the `configURI` or `appStoreURI` are unable to be
@@ -45,18 +45,25 @@ public class LaunchGate {
 
      - Returns: A `LaunchGate` instance or `nil`
      */
-    public init?(configURI: String, appStoreURI: String, stringHandler: StringHandler? = nil, dialogDelegate: DialogManagerDelegate? = nil) {
+    public init?(configURI: String, appStoreURI: String,
+                 wordingHandler: WordingHandler? = nil,
+                 dialogDelegate: DialogManagerDelegate? = nil) {
         guard let configURL = URL(string: configURI) else { return nil }
         guard let appStoreURL = URL(string: appStoreURI) else { return nil }
 
         configurationFileURL = configURL
         updateURL = appStoreURL
         parser = DefaultParser()
-        dialogManager = DialogManager(withStringHandler: stringHandler, andDelegate: dialogDelegate)
-    }
+        dialogManager = DialogManager(withWordingHandler: wordingHandler, andDelegate: dialogDelegate)
 
-    public func setDelegate(_ delegate: LaunchGateDelegate?) {
-        self.delegate = delegate
+        print(
+            """
+            🍒 [LaunchGate] configurationFileUrl = \(configurationFileURL)
+            updateUrl = \(updateURL)
+            parser = \(parser)
+            dialogManager = \(dialogManager)
+            """
+        )
     }
 
     /// Check the configuration file and perform any appropriate action.
