@@ -50,7 +50,7 @@ public class LaunchGate {
 
   /// Check the configuration file and perform any appropriate action.
   public func check() {
-    performCheck(RemoteFileManager(remoteFileURL: (configurationFileURL as URL)))
+    performCheck(RemoteFileManager(remoteFileURL: (configurationFileURL)))
   }
 
   // MARK: - Internal API
