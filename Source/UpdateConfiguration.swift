@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct UpdateConfiguration: Dialogable, Rememberable {
+public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
 
-  var version = ""
-  var message = ""
+    let version: String
+    let message: String
 
   init?(version: String, message: String) {
     guard !version.isEmpty else { return nil }
