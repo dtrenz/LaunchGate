@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol Dialogable {
   var message: String { get }
