@@ -6,6 +6,8 @@
 //
 //
 
+// swiftlint:disable identifier_name
+
 import Foundation
 import UIKit
 
