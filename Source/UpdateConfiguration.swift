@@ -9,7 +9,7 @@
 import Foundation
 
 public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
-
+    /// NOTE: 'version' name not the same; 'minimumVersion'
     let version: String
     let message: String
 
