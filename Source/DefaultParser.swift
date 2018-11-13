@@ -79,20 +79,20 @@ class DefaultParser: LaunchGateParser {
             return nil
         }
     }
-    private static func parseOptionalUpdate(_ jsonData: Data) -> UpdateConfiguration? {
+    private static func parseOptionalUpdate(_ jsonData: Data) -> OptionalUpdate? {
         do {
             let decoder = JSONDecoder()
-            let result = try decoder.decode(UpdateConfiguration.self, from: jsonData)
+            let result = try decoder.decode(OptionalUpdate.self, from: jsonData)
             return result
         } catch {
             print(error)
             return nil
         }
     }
-    private static func parseRequiredUpdate(_ jsonData: Data) -> UpdateConfiguration? {
+    private static func parseRequiredUpdate(_ jsonData: Data) -> RequiredUpdate? {
         do {
             let decoder = JSONDecoder()
-            let result = try decoder.decode(UpdateConfiguration.self, from: jsonData)
+            let result = try decoder.decode(RequiredUpdate.self, from: jsonData)
             return result
         } catch {
             print(error)
