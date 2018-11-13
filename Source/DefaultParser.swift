@@ -35,11 +35,8 @@ class DefaultParser: LaunchGateParser {
             let decoder = JSONDecoder()
             let result = try decoder.decode(LaunchGateConfiguration.self, from: jsonData)
             return result
-        } catch let error as NSError {
+        } catch let error {
             print("LaunchGate — Error: \(error.localizedDescription)")
-            if let recoverySuggestion = error.localizedRecoverySuggestion {
-                print(recoverySuggestion)
-            }
         }
         return nil
     }

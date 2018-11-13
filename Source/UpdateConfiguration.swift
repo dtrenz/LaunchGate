@@ -21,11 +21,11 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
   }
     public init(from decoder: Decoder) throws {
         let optionalKeyedContainer = try decoder.container(keyedBy: OptionalCodingKeys.self)
-        let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
         do {
             version = try optionalKeyedContainer.decode(String.self, forKey: .version)
             message = try optionalKeyedContainer.decode(String.self, forKey: .message)
         } catch {
+            let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
             version = try requiredKeyedContainer.decode(String.self, forKey: .version)
             message = try requiredKeyedContainer.decode(String.self, forKey: .message)
         }

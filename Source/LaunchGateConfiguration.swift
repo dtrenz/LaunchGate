@@ -20,4 +20,19 @@ public struct LaunchGateConfiguration: Decodable {
   /// A required `UpdateConfiguration`, parsed from the configuration file.
   var requiredUpdate: UpdateConfiguration?
 
+  public init(from decoder:Decoder) throws {
+    let iosContainer = try decoder.container(keyedBy: IOSRootKey.self)
+    let alert = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .alert)
+  }
+  enum IOSRootKey: CodingKey {
+    case ios
+    case alert
+    case optionalUpdate
+    case requiredUpdate
+  }
+  enum ConfigCodingKeys: String, CodingKey {
+    case alert
+    case optionalUpdate
+    case requiredUpdate
+  }
 }
