@@ -22,11 +22,10 @@ public struct LaunchGateConfiguration: Decodable {
 
   public init(from decoder: Decoder) throws {
     let iosContainer = try decoder.container(keyedBy: IOSRootKey.self)
-    let ios = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .ios)
-    
-    let alert = try ios.decode(AlertConfiguration.self, forKey: .alert)
-    let optionalUpdate = try ios.decode(UpdateConfiguration.self, forKey: .optionalUpdate)
-    let requiredUpdate = try ios.decode(UpdateConfiguration.self, forKey: .requiredUpdate)
+    //let ios = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .ios)
+    self.alert = try iosContainer.decode(AlertConfiguration.self, forKey: .alert)
+    self.optionalUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .optionalUpdate)
+    self.requiredUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .requiredUpdate)
     //let alert = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .alert)
     //let optionalUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .optionalUpdate)
     //let requiredUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .requiredUpdate)
