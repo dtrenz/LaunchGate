@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AlertConfiguration: Decodable, Dialogable, Rememberable {
+public class AlertConfiguration: Decodable, Dialogable, Rememberable {
 
     let message: String
     let blocking: Bool

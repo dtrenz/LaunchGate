@@ -9,7 +9,7 @@
 import Foundation
 
 /// The configuration object that should be created as the result of parsing the remote configuration file.
-public struct LaunchGateConfiguration: Decodable {
+public class LaunchGateConfiguration: Decodable {
 
   /// An `AlertConfiguration`, parsed from the configuration file.
   var alert: AlertConfiguration?
@@ -20,8 +20,7 @@ public struct LaunchGateConfiguration: Decodable {
   /// A required `UpdateConfiguration`, parsed from the configuration file.
   var requiredUpdate: UpdateConfiguration?
     
-
-  public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
     let iosContainer = try decoder.container(keyedBy: IOSRootKey.self)
     //let ios = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .ios)
     self.alert = try iosContainer.decode(AlertConfiguration.self, forKey: .alert)

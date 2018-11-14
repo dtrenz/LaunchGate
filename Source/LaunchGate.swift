@@ -25,6 +25,7 @@ public class LaunchGate {
   /// Manager object for the various alert dialogs
   var dialogManager: DialogManager!
 
+    //var config: LaunchGateConfiguration!
   // MARK: - Public API
 
   /**
@@ -63,7 +64,8 @@ public class LaunchGate {
   */
   func performCheck(_ remoteFileManager: RemoteFileManager) {
     remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
-      if let config = self.parser.parse(jsonData) {
+        if let config: LaunchGateConfiguration = self.parser.parse(jsonData) {
+        print("Config: \(config)")
         self.displayDialogIfNecessary(config, dialogManager: self.dialogManager)
       }
     }
