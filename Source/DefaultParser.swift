@@ -50,7 +50,7 @@ class DefaultParser: LaunchGateParser {
 //      var optionalUpdate: UpdateConfiguration?
 //      var requiredUpdate: UpdateConfiguration?
 //
-//      if let alertJSON = config["alert"] /*as? JSON*/ {
+//      if let alertJSON = config["alert"] as? JSON {
 //        alert = try DefaultParser.parseAlert(alertJSON)
 //      }
 //
