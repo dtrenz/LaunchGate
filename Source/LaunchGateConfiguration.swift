@@ -12,36 +12,17 @@ import Foundation
 public struct LaunchGateConfiguration: Decodable {
 
   /// An `AlertConfiguration`, parsed from the configuration file.
-  var alert: AlertConfiguration
+  var alert: AlertConfiguration?
 
   /// An optional `UpdateConfiguration`, parsed from the configuration file.
-  var optionalUpdate: UpdateConfiguration
+  var optionalUpdate: UpdateConfiguration?
 
   /// A required `UpdateConfiguration`, parsed from the configuration file.
-  var requiredUpdate: UpdateConfiguration
+  var requiredUpdate: UpdateConfiguration?
     
-    struct IOSRootKeys: CodingKey {
-        var stringValue: String
-        var intValue: Int?
-        
-        init?(stringValue: String) {
-           self.stringValue = stringValue
-        }
-
-        init?(intValue: Int) {
-            self.intValue = intValue
-            self.stringValue = "\(intValue)"
-        }
-        
-        static func checkKeyName(to key: String) -> IOSRootKeys {
-            return IOSRootKeys(stringValue: key)!
-        }
-        
-        static let keyName = IOSRootKeys.changeKeyName(to: <#T##String#>)
-    }
 
   public init(from decoder: Decoder) throws {
-    let iosContainer = try decoder.container(keyedBy: IOSRootKeys.self)
+    let iosContainer = try decoder.container(keyedBy: IOSRootKey.self)
     //let ios = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .ios)
     self.alert = try iosContainer.decode(AlertConfiguration.self, forKey: .alert)
     self.optionalUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .optionalUpdate)
@@ -51,7 +32,7 @@ public struct LaunchGateConfiguration: Decodable {
     //let requiredUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .requiredUpdate)
   }
   enum IOSRootKey: CodingKey {
-    case ios
+    //case ios
     case alert
     case optionalUpdate
     case requiredUpdate
