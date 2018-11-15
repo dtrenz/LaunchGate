@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class UpdateConfiguration: Decodable, Dialogable, Rememberable {
+public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
     var version: String
     var message: String
 
@@ -19,7 +19,7 @@ public class UpdateConfiguration: Decodable, Dialogable, Rememberable {
     self.version = version
     self.message = message
   }
-    required public init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
         let optionalKeyedContainer = try decoder.container(keyedBy: OptionalCodingKeys.self)
         let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
         version = try optionalKeyedContainer.decode(String.self, forKey: .version)

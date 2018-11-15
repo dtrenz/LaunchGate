@@ -75,7 +75,7 @@ class DefaultParser: LaunchGateParser {
 //
 //    return nil
 //  }
-//
+//   --- Experiments ---
 //    private static func parseAlert(_ jsonData: Data) -> AlertConfiguration? {
 //        do {
 //            let decoder = JSONDecoder()
@@ -106,6 +106,7 @@ class DefaultParser: LaunchGateParser {
 //            return nil
 //        }
 //    }
+//  --- End of Experiments ---
 //  private static func parseAlert(_ json: JSON) throws -> AlertConfiguration? {
 //    guard let message = json["message"] as? String else { throw Error.unableToParseAlert }
 //    guard let blocking = json["blocking"] as? Bool else { throw Error.unableToParseAlert }
