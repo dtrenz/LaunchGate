@@ -9,8 +9,8 @@ import Foundation
 
 public struct AlertConfiguration: Decodable, Dialogable, Rememberable {
 
-    let message: String?
-    let blocking: Bool?
+    let message: String
+    let blocking: Bool
 
   init?(message: String, blocking: Bool) {
     guard !message.isEmpty else { return nil }
@@ -26,7 +26,7 @@ public struct AlertConfiguration: Decodable, Dialogable, Rememberable {
   }
 
   func rememberString() -> String {
-    return self.message! ///unwrap
+    return self.message
   }
 
 }

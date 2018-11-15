@@ -9,8 +9,8 @@
 import Foundation
 
 public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
-    var version: String?
-    var message: String?
+    var version: String
+    var message: String
 
   init?(version: String, message: String) {
     guard !version.isEmpty else { return nil }
@@ -20,12 +20,12 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
     self.message = message
   }
   public init(from decoder: Decoder) throws {
-        let optionalKeyedContainer = try decoder.container(keyedBy: OptionalCodingKeys.self)
-        let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
-        version = try optionalKeyedContainer.decode(String.self, forKey: .version)
-        message = try optionalKeyedContainer.decode(String.self, forKey: .message)
-        version = try requiredKeyedContainer.decode(String.self, forKey: .version)
-        message = try requiredKeyedContainer.decode(String.self, forKey: .message)
+        let optionalKeyedContainer = try? decoder.container(keyedBy: OptionalCodingKeys.self)
+        let requiredKeyedContainer = try? decoder.container(keyedBy: RequiredCodingKeys.self)
+        version = try optionalKeyedContainer!.decode(String.self, forKey: .version)
+        message = try optionalKeyedContainer!.decode(String.self, forKey: .message)
+        version = try requiredKeyedContainer!.decode(String.self, forKey: .version)
+        message = try requiredKeyedContainer!.decode(String.self, forKey: .message)
     }
     enum OptionalCodingKeys: String, CodingKey {
         case version = "optionalVersion"
@@ -43,7 +43,7 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
   }
 
   func rememberString() -> String {
-    return self.version! ///unwrap
+    return self.version
   }
 
 }

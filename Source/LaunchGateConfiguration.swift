@@ -20,22 +20,22 @@ public struct LaunchGateConfiguration: Decodable {
   /// A required `UpdateConfiguration`, parsed from the configuration file.
   var requiredUpdate: UpdateConfiguration?
     
-  public init(from decoder: Decoder) throws {
-    let iosContainer = try decoder.container(keyedBy: IOSRootKey.self)
-    //let ios = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .ios)
-    //self.alert = try iosContainer.decode(AlertConfiguration.self, forKey: .alert)
-    //self.optionalUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .optionalUpdate)
-    //self.requiredUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .requiredUpdate)
-    //let alert = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .alert)
-    //let optionalUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .optionalUpdate)
-    //let requiredUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .requiredUpdate)
-  }
-  enum IOSRootKey: String, CodingKey {
-    case ios
-    //case alert
-    //case optionalUpdate
-    //case requiredUpdate
-  }
+//  public init(from decoder: Decoder) throws {
+//    let iosContainer = try decoder.container(keyedBy: IOSRootKey.self)
+//    //let ios = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .ios)
+//    //self.alert = try iosContainer.decode(AlertConfiguration.self, forKey: .alert)
+//    //self.optionalUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .optionalUpdate)
+//    //self.requiredUpdate = try iosContainer.decode(UpdateConfiguration.self, forKey: .requiredUpdate)
+//    //let alert = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .alert)
+//    //let optionalUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .optionalUpdate)
+//    //let requiredUpdate = try iosContainer.nestedContainer(keyedBy: IOSRootKey.self, forKey: .requiredUpdate)
+//  }
+//  enum IOSRootKey: String, CodingKey {
+//    case ios
+//    //case alert
+//    //case optionalUpdate
+//    //case requiredUpdate
+//  }
 //  enum ConfigCodingKeys: String, CodingKey {
 //    case alert
 //    case optionalUpdate

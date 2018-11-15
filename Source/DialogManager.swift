@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Dialogable {
-  var message: String? { get }
+  var message: String { get }
 }
 
 class DialogManager {
@@ -24,7 +24,7 @@ class DialogManager {
   }
 
   func displayAlertDialog(_ alertConfig: RememberableDialogSubject, blocking: Bool) {
-    let dialog = createAlertController(.alert(blocking: blocking), message: alertConfig.message!) ///unwrap
+    let dialog = createAlertController(.alert(blocking: blocking), message: alertConfig.message)
 
     displayAlertController(dialog) { () -> Void in
       if !blocking {
@@ -34,13 +34,13 @@ class DialogManager {
   }
 
   func displayRequiredUpdateDialog(_ updateConfig: Dialogable, updateURL: URL) {
-    let dialog = createAlertController(.requiredUpdate(updateURL: updateURL), message: updateConfig.message!) ///unwrap
+    let dialog = createAlertController(.requiredUpdate(updateURL: updateURL), message: updateConfig.message)
 
     displayAlertController(dialog, completion: nil)
   }
 
   func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: URL) {
-    let dialog = createAlertController(.optionalUpdate(updateURL: updateURL), message: updateConfig.message!) ///unwrap
+    let dialog = createAlertController(.optionalUpdate(updateURL: updateURL), message: updateConfig.message) 
 
     displayAlertController(dialog) { () -> Void in
       Memory.remember(updateConfig)

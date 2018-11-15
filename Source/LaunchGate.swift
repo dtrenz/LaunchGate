@@ -89,7 +89,7 @@ public class LaunchGate {
       }
     } else if let alert = config.alert {
       if shouldShowAlertDialog(alert) {
-        dialogManager.displayAlertDialog(alert, blocking: alert.blocking!) ///unwrap
+        dialogManager.displayAlertDialog(alert, blocking: alert.blocking)
       }
     }
   }
@@ -102,7 +102,7 @@ public class LaunchGate {
    - Returns: `true`, if an alert dialog should be displayed; `false`, if not.
    */
   func shouldShowAlertDialog(_ alertConfig: AlertConfiguration) -> Bool {
-    return alertConfig.blocking! || alertConfig.isNotRemembered()  ///unwrap
+    return alertConfig.blocking || alertConfig.isNotRemembered()
   }
 
   /**
@@ -115,7 +115,7 @@ public class LaunchGate {
   func shouldShowOptionalUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
     guard updateConfig.isNotRemembered() else { return false }
 
-    return appVersion < updateConfig.version! ///unwrap
+    return appVersion < updateConfig.version
   }
 
   /**
@@ -126,7 +126,7 @@ public class LaunchGate {
    - Returns: `true`, if a required update dialog should be displayed; `false`, if not.
    */
   func shouldShowRequiredUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
-    return appVersion < updateConfig.version! ///unwrap
+    return appVersion < updateConfig.version
   }
 
   func currentAppVersion() -> String? {
