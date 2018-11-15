@@ -42,6 +42,7 @@ class DefaultParser: LaunchGateParser {
 //    }
   func parse(_ jsonData: Data) -> LaunchGateConfiguration? {
     do {
+        print("Parsing...")
         let jsonData = try JSONSerialization.jsonObject(with: jsonData, options: [])
       guard let json = jsonData as? JSON else { throw Error.unableToParseConfigurationObject }
       guard let config = json["ios"] else { throw Error.unableToParseConfigurationObject }
@@ -50,17 +51,26 @@ class DefaultParser: LaunchGateParser {
       var optionalUpdate: UpdateConfiguration?
       var requiredUpdate: UpdateConfiguration?
 
-      if let alertJSON = config["alert"] as? Data {
+        guard let alertJSON = config["alert"] as? Data else {
+            print("No alert")
+            return nil }
         alert = try DefaultParser.parseAlert(alertJSON)
-      }
+        print("Alert: \(alert!)")
+      
 
-      if let optionalUpdateJSON = config["optionalUpdate"] as? Data {
+      guard let optionalUpdateJSON = config["optionalUpdate"] as? Data else {
+        print("No optional update")
+        return nil }
         optionalUpdate = try DefaultParser.parseOptionalUpdate(optionalUpdateJSON)
-      }
+        print("Optional Update: \(optionalUpdate!)")
+      
 
-      if let requiredUpdateJSON = config["requiredUpdate"] as? Data {
+      guard let requiredUpdateJSON = config["requiredUpdate"] as? Data else {
+        print("No required update")
+        return nil }
         requiredUpdate = try DefaultParser.parseRequiredUpdate(requiredUpdateJSON)
-      }
+        print("Required Update: \(requiredUpdate!)")
+      
 
       return LaunchGateConfiguration(alert: alert, optionalUpdate: optionalUpdate, requiredUpdate: requiredUpdate)
     } catch let error as DefaultParser.Error {
