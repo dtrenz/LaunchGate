@@ -9,8 +9,8 @@
 import Foundation
 
 public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
-    var version: String
-    var message: String
+    var version: String?
+    var message: String?
 
   init?(version: String, message: String) {
     guard !version.isEmpty else { return nil }
@@ -43,7 +43,7 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
   }
 
   func rememberString() -> String {
-    return self.version
+    return self.version! ///unwrap
   }
 
 }
