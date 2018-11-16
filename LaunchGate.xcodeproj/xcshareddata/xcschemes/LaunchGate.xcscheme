@@ -43,10 +43,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C5C04BC51C696767007397D0"
-            BuildableName = "LaunchGate.framework"
-            BlueprintName = "LaunchGate"
-            ReferencedContainer = "container:LaunchGate.xcodeproj">
+            BlueprintIdentifier = "C5A878881C6A7A95004599C2"
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
+            ReferencedContainer = "container:Example/Example.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,15 +62,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C5C04BC51C696767007397D0"
-            BuildableName = "LaunchGate.framework"
-            BlueprintName = "LaunchGate"
-            ReferencedContainer = "container:LaunchGate.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

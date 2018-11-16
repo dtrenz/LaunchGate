@@ -8,10 +8,9 @@
 
 import Foundation
 
-public struct UpdateConfiguration: Dialogable, Rememberable {
-
-  var version = ""
-  var message = ""
+public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
+    var version: String
+    var message: String
 
   init?(version: String, message: String) {
     guard !version.isEmpty else { return nil }
@@ -20,6 +19,29 @@ public struct UpdateConfiguration: Dialogable, Rememberable {
     self.version = version
     self.message = message
   }
+  public init(from decoder: Decoder) throws {
+    let optionalKeyedContainer = try decoder.container(keyedBy: OptionalCodingKeys.self)
+    let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
+    do {
+        version = try optionalKeyedContainer.decode(String.self, forKey: .version)
+        message = try optionalKeyedContainer.decode(String.self, forKey: .message)
+    } catch {
+        do {
+            version = try requiredKeyedContainer.decode(String.self, forKey: .version)
+            message = try requiredKeyedContainer.decode(String.self, forKey: .message)
+        } catch {
+            throw error
+        }
+      }
+    }
+    enum OptionalCodingKeys: String, CodingKey {
+        case version = "optionalVersion"
+        case message
+    }
+    enum RequiredCodingKeys: String, CodingKey {
+        case version = "minimumVersion"
+        case message
+    }
 
   // MARK: Rememberable Protocol Methods
 

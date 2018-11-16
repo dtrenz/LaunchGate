@@ -7,10 +7,10 @@
 
 import Foundation
 
-public struct AlertConfiguration: Dialogable, Rememberable {
+public struct AlertConfiguration: Decodable, Dialogable, Rememberable {
 
-  var message = ""
-  var blocking = false
+    let message: String
+    let blocking: Bool
 
   init?(message: String, blocking: Bool) {
     guard !message.isEmpty else { return nil }
