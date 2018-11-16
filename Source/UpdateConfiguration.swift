@@ -20,12 +20,22 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
     self.message = message
   }
   public init(from decoder: Decoder) throws {
-        let optionalKeyedContainer = try? decoder.container(keyedBy: OptionalCodingKeys.self)
-        let requiredKeyedContainer = try? decoder.container(keyedBy: RequiredCodingKeys.self)
-        version = try optionalKeyedContainer!.decode(String.self, forKey: .version)
-        message = try optionalKeyedContainer!.decode(String.self, forKey: .message)
-        version = try requiredKeyedContainer!.decode(String.self, forKey: .version)
-        message = try requiredKeyedContainer!.decode(String.self, forKey: .message)
+    let optionalKeyedContainer = try decoder.container(keyedBy: OptionalCodingKeys.self)
+    let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
+    
+    do {
+        version = try optionalKeyedContainer.decode(String.self, forKey: .version)
+        message = try optionalKeyedContainer.decode(String.self, forKey: .message)
+    } catch {
+        do {
+            version = try requiredKeyedContainer.decode(String.self, forKey: .version)
+            message = try requiredKeyedContainer.decode(String.self, forKey: .message)
+        } catch {
+            throw error
+        }
+            
+      }
+    
     }
     enum OptionalCodingKeys: String, CodingKey {
         case version = "optionalVersion"
