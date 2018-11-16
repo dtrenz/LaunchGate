@@ -65,7 +65,6 @@ public class LaunchGate {
   func performCheck(_ remoteFileManager: RemoteFileManager) {
     remoteFileManager.fetchRemoteFile { (jsonData) -> Void in
         if let config: LaunchGateConfiguration = self.parser.parse(jsonData) {
-        print("Config: \(config)")
         self.displayDialogIfNecessary(config, dialogManager: self.dialogManager)
       }
     }

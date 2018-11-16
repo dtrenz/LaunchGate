@@ -22,7 +22,6 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
   public init(from decoder: Decoder) throws {
     let optionalKeyedContainer = try decoder.container(keyedBy: OptionalCodingKeys.self)
     let requiredKeyedContainer = try decoder.container(keyedBy: RequiredCodingKeys.self)
-    
     do {
         version = try optionalKeyedContainer.decode(String.self, forKey: .version)
         message = try optionalKeyedContainer.decode(String.self, forKey: .message)
@@ -33,9 +32,7 @@ public struct UpdateConfiguration: Decodable, Dialogable, Rememberable {
         } catch {
             throw error
         }
-            
       }
-    
     }
     enum OptionalCodingKeys: String, CodingKey {
         case version = "optionalVersion"

@@ -40,8 +40,7 @@ class DialogManager {
   }
 
   func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: URL) {
-    let dialog = createAlertController(.optionalUpdate(updateURL: updateURL), message: updateConfig.message) 
-
+    let dialog = createAlertController(.optionalUpdate(updateURL: updateURL), message: updateConfig.message)
     displayAlertController(dialog) { () -> Void in
       Memory.remember(updateConfig)
     }
