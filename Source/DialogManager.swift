@@ -83,11 +83,11 @@ class DialogManager {
   func topViewController() -> UIViewController? {
     if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
         var topViewController: UIViewController = rootViewController
-        
+
         while let presentedViewController = topViewController.presentedViewController {
             topViewController = presentedViewController
         }
-        
+
         return topViewController
     } else {
         return nil
