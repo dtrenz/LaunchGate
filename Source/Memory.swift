@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Memory {
+enum Memory {
 
   static let userPrefs = UserDefaults.standard
 
@@ -21,7 +21,7 @@ struct Memory {
   }
 
   static func contains(_ item: Rememberable) -> Bool {
-    return userPrefs.object(forKey: item.rememberKey()) as? String == item.rememberString()
+    userPrefs.object(forKey: item.rememberKey()) as? String == item.rememberString()
   }
 
 }
