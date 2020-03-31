@@ -1,18 +1,13 @@
-source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
 use_frameworks!
 
 pod 'SwiftLint'
 
-target 'LaunchGateTests' do
-  platform :ios, '8.3'
-  inherit! :search_paths
-  pod 'Quick'
-  pod 'Nimble'
-  pod 'SwiftLint'
-end
-
 target 'LaunchGate' do
-    platform :ios, '8.3'
+  target 'LaunchGateTests' do
     inherit! :search_paths
-    pod 'SwiftLint'
+    
+    pod 'Quick'
+    pod 'Nimble'
+  end
 end

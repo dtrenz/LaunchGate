@@ -81,27 +81,27 @@ class DialogManager {
   }
 
   func topViewController() -> UIViewController? {
-    return UIApplication.shared.keyWindow?.rootViewController
+    UIApplication.shared.keyWindow?.rootViewController
   }
 
   // MARK: Custom Alert Actions
 
   private func dismissActon() -> UIAlertAction {
-    return UIAlertAction(
+    UIAlertAction(
         title: NSLocalizedString("Dismiss", comment: "Button title for dismissing the update AlertView"),
         style: .default) { _ in }
   }
 
   private func updateAction(_ updateURL: URL) -> UIAlertAction {
-    return UIAlertAction(
-        title: NSLocalizedString("Update", comment: "Button title for accepting the update AlertView"),
-        style: .default) { (_) -> Void in
-            if UIApplication.shared.canOpenURL(updateURL) {
-                DispatchQueue.main.async { [] in
-                    UIApplication.shared.openURL(updateURL)
-                }
-            }
+    UIAlertAction(
+      title: NSLocalizedString("Update", comment: "Button title for accepting the update AlertView"),
+      style: .default) { _ in
+        if UIApplication.shared.canOpenURL(updateURL) {
+          DispatchQueue.main.async {
+            UIApplication.shared.open(updateURL, options: [:], completionHandler: nil)
+          }
         }
+    }
   }
 
 }

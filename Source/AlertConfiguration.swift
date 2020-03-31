@@ -22,11 +22,11 @@ public struct AlertConfiguration: Dialogable, Rememberable {
   // MARK: Rememberable Protocol Methods
 
   func rememberKey() -> String {
-    return "LAST_ALERT"
+    "LAST_ALERT"
   }
 
   func rememberString() -> String {
-    return self.message
+    self.message
   }
 
 }

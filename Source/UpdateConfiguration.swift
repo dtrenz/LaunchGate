@@ -24,11 +24,11 @@ public struct UpdateConfiguration: Dialogable, Rememberable {
   // MARK: Rememberable Protocol Methods
 
   func rememberKey() -> String {
-    return "OPTIONAL_UPDATE"
+    "OPTIONAL_UPDATE"
   }
 
   func rememberString() -> String {
-    return self.version
+    self.version
   }
 
 }

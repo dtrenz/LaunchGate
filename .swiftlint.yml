@@ -1,13 +1,69 @@
-disabled_rules: # rule identifiers to exclude from running
- - valid_docs
-  # Find all the available rules by running:
-  # swiftlint rules
-included: # paths to include during linting. `--path` is ignored if present.
+enabled_rules:
+  - anyobject_protocol
+  - array_init
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - enum_case_associated_values_count
+  - explicit_init
+  - fallthrough
+  - fatal_error_message
+  - file_name_no_space
+  - first_where
+  - flatmap_over_map_reduce
+  - function_default_parameter_at_end
+  - identical_operands
+  - implicit_return
+  - joined_default_parameter
+  - last_where
+  - legacy_multiple
+  - legacy_random
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - multiline_parameters
+  - nslocalizedstring_key
+  - number_separator
+  - operator_usage_whitespace
+  - optional_enum_case_matching
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - private_action
+  - prohibited_super_call
+  - reduce_into
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - sorted_first_last
+  - strong_iboutlet
+  - toggle_bool
+  - trailing_closure
+  - unavailable_function
+  - unused_declaration
+  - unused_import
+  - xct_specific_matcher
+
+included:
   - Source
-# parameterized rules can be customized from this configuration file
-line_length: 120
-# parameterized rules are first parameterized as a warning level, then error level.
+excluded:
+   - Pods
+
 type_body_length:
-  - 300 # warning
-  - 400 # error
-# reporter: "csv" # reporter type (xcode, json, csv, checkstyle)
+  warning: 300 # warning
+  error: 400 # error
+line_length:
+  warning: 120
+  error: 500
+number_separator:
+  minimum_length: 5
+
+reporter: "xcode"

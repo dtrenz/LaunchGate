@@ -16,7 +16,7 @@ protocol Rememberable {
 extension Rememberable {
 
   func isNotRemembered() -> Bool {
-    return !Memory.contains(self)
+    !Memory.contains(self)
   }
 
 }
