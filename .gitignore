@@ -56,3 +56,5 @@ fastlane/screenshots
 
 # jazzy docs
 docs/
+
+.DS_Store

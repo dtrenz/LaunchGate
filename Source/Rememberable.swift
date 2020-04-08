@@ -1,22 +1,14 @@
-//
-//  Rememberable
-//  LaunchGate
-//
-//  Created by Dan Trenz on 2/8/16.
-//
-//
-
 import Foundation
 
 protocol Rememberable {
-  func rememberKey() -> String
-  func rememberString() -> String
+    var rememberKey: String { get }
+    var rememberString: String { get }
 }
 
 extension Rememberable {
 
-  func isNotRemembered() -> Bool {
-    !Memory.contains(self)
-  }
+    func isNotRemembered() -> Bool {
+        !Memory.contains(self)
+    }
 
 }

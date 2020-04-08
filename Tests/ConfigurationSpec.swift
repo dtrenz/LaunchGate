@@ -33,7 +33,7 @@ class ConfigurationSpec: QuickSpec {
         it("returns the expected key") {
           let alertConfig = AlertConfiguration(message: "Hello world", blocking: false)
           
-          expect(alertConfig!.rememberKey()) == "LAST_ALERT"
+          expect(alertConfig!.rememberKey) == "LAST_ALERT"
         }
         
       }
@@ -43,7 +43,7 @@ class ConfigurationSpec: QuickSpec {
         it("returns the alert message") {
           let alertConfig = AlertConfiguration(message: "Hello world", blocking: false)
           
-          expect(alertConfig!.rememberString()) == alertConfig!.message
+          expect(alertConfig!.rememberString) == alertConfig!.message
         }
         
       }
@@ -85,7 +85,7 @@ class ConfigurationSpec: QuickSpec {
         it("returns the expected key") {
           let updateConfig = UpdateConfiguration(version: "1.0", message: "An update is available.")
           
-          expect(updateConfig!.rememberKey()) == "OPTIONAL_UPDATE"
+          expect(updateConfig!.rememberKey) == "OPTIONAL_UPDATE"
         }
         
       }
@@ -95,7 +95,7 @@ class ConfigurationSpec: QuickSpec {
         it("returns the update version") {
           let updateConfig = UpdateConfiguration(version: "1.0", message: "An update is available.")
           
-          expect(updateConfig!.rememberString()) == updateConfig!.version
+          expect(updateConfig!.rememberString) == updateConfig!.version
         }
         
       }

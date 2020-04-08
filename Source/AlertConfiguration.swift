@@ -1,32 +1,20 @@
-//
-//  AlertConfiguration.swift
-//  LaunchGate
-//
-//  Created by Dan Trenz on 2/8/16.
-//
-
 import Foundation
 
-public struct AlertConfiguration: Dialogable, Rememberable {
+public struct AlertConfiguration: Dialogable {
 
-  var message = ""
-  var blocking = false
+    var message = ""
+    var blocking = false
 
-  init?(message: String, blocking: Bool) {
-    guard !message.isEmpty else { return nil }
+    init?(message: String, blocking: Bool) {
+        guard !message.isEmpty else { return nil }
 
-    self.message = message
-    self.blocking = blocking
-  }
+        self.message = message
+        self.blocking = blocking
+    }
 
-  // MARK: Rememberable Protocol Methods
+}
 
-  func rememberKey() -> String {
-    "LAST_ALERT"
-  }
-
-  func rememberString() -> String {
-    self.message
-  }
-
+extension AlertConfiguration: Rememberable {
+    var rememberKey: String { "LAST_ALERT" }
+    var rememberString: String { message }
 }

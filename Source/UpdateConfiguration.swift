@@ -1,14 +1,6 @@
-//
-//  UpdateConfiguration.swift
-//  LaunchGate
-//
-//  Created by Dan Trenz on 2/8/16.
-//
-//
-
 import Foundation
 
-public struct UpdateConfiguration: Dialogable, Rememberable {
+public struct UpdateConfiguration: Dialogable {
 
   var version = ""
   var message = ""
@@ -21,14 +13,9 @@ public struct UpdateConfiguration: Dialogable, Rememberable {
     self.message = message
   }
 
-  // MARK: Rememberable Protocol Methods
+}
 
-  func rememberKey() -> String {
-    "OPTIONAL_UPDATE"
-  }
-
-  func rememberString() -> String {
-    self.version
-  }
-
+extension UpdateConfiguration: Rememberable {
+    var rememberKey: String { "OPTIONAL_UPDATE" }
+    var rememberString: String { version }
 }

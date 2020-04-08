@@ -1,23 +1,15 @@
-//
-//  LaunchGateConfiguration
-//  LaunchGate
-//
-//  Created by Dan Trenz on 2/2/16.
-//
-//
-
 import Foundation
 
 /// The configuration object that should be created as the result of parsing the remote configuration file.
 public struct LaunchGateConfiguration {
 
-  /// An `AlertConfiguration`, parsed from the configuration file.
-  var alert: AlertConfiguration?
+    /// An `AlertConfiguration`, parsed from the configuration file.
+    var alert: AlertConfiguration?
 
-  /// An optional `UpdateConfiguration`, parsed from the configuration file.
-  var optionalUpdate: UpdateConfiguration?
+    /// An optional `UpdateConfiguration`, parsed from the configuration file.
+    var optionalUpdate: UpdateConfiguration?
 
-  /// A required `UpdateConfiguration`, parsed from the configuration file.
-  var requiredUpdate: UpdateConfiguration?
+    /// A required `UpdateConfiguration`, parsed from the configuration file.
+    var requiredUpdate: UpdateConfiguration?
 
 }

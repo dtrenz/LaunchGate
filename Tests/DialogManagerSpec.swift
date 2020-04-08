@@ -40,7 +40,7 @@ class DialogManagerSpec: QuickSpec {
       
       class MockViewController: UIViewController {
         override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-          completion!()
+          completion?()
         }
       }
       
