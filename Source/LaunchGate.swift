@@ -100,7 +100,7 @@ public class LaunchGate {
    - Returns: `true`, if an alert dialog should be displayed; `false`, if not.
    */
   func shouldShowAlertDialog(_ alertConfig: AlertConfiguration) -> Bool {
-    return alertConfig.blocking || alertConfig.isNotRemembered()
+    alertConfig.blocking || alertConfig.isNotRemembered()
   }
 
   /**
@@ -124,11 +124,11 @@ public class LaunchGate {
    - Returns: `true`, if a required update dialog should be displayed; `false`, if not.
    */
   func shouldShowRequiredUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
-    return appVersion < updateConfig.version
+    appVersion < updateConfig.version
   }
 
   func currentAppVersion() -> String? {
-    return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
   }
 
 }
