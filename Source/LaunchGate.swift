@@ -77,18 +77,19 @@ public class LaunchGate {
      - dialogManager: Manager object for the various alert dialogs
    */
   func displayDialogIfNecessary(_ config: LaunchGateConfiguration, dialogManager: DialogManager) {
-    if let reqUpdate = config.requiredUpdate, let appVersion = currentAppVersion() {
-      if shouldShowRequiredUpdateDialog(reqUpdate, appVersion: appVersion) {
-        dialogManager.displayRequiredUpdateDialog(reqUpdate, updateURL: updateURL)
-      }
-    } else if let optUpdate = config.optionalUpdate, let appVersion = currentAppVersion() {
-      if shouldShowOptionalUpdateDialog(optUpdate, appVersion: appVersion) {
-        dialogManager.displayOptionalUpdateDialog(optUpdate, updateURL: updateURL)
-      }
-    } else if let alert = config.alert {
-      if shouldShowAlertDialog(alert) {
-        dialogManager.displayAlertDialog(alert, blocking: alert.blocking)
-      }
+    if let reqUpdate = config.requiredUpdate,
+        let appVersion = currentAppVersion(),
+        shouldShowRequiredUpdateDialog(reqUpdate, appVersion: appVersion) {
+            dialogManager.displayRequiredUpdateDialog(reqUpdate, updateURL: updateURL)
+    } else if let alert = config.alert,
+        shouldShowAlertDialog(alert) {
+            dialogManager.displayAlertDialog(alert, blocking: alert.blocking)
+    } else if let optUpdate = config.optionalUpdate,
+        let appVersion = currentAppVersion(),
+        shouldShowOptionalUpdateDialog(optUpdate, appVersion: appVersion) {
+            dialogManager.displayOptionalUpdateDialog(optUpdate, updateURL: updateURL)
+    } else {
+        print("LaunchGate - No action is required")
     }
   }
 
