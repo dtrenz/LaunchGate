@@ -60,11 +60,10 @@ See the section below, for instructions on [how to provide a custom parser](#cus
 1. Import it into your `AppDelegate`.
 2. Instantiate it, passing in the location of your configuration file and the
 App Store URI of your app.
-3. Lastly, call `launchGate?.check()` in `applicationDidBecomeActive`.
+3. Lastly, call `launchGate?.check()` in `applicationDidBecomeActive` or `sceneDidBecomeActive` if you are using scene based windowing.
 
 ```swift
 import LaunchGate
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -83,6 +82,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+or if you have a Application Scene Manifest setup:
+
+```swift
+import LaunchGate
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+  var window: UIWindow?
+
+  func sceneDidBecomeActive(_ scene: UIScene) {
+    launchGate?.check()
+  }
+
+}
+```
 
 ## The Configuration File
 
