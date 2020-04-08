@@ -12,7 +12,7 @@ jazzy \
   --author "Dan Trenz" \
   --github_url https://github.com/dtrenz/LaunchGate \
   --module-version 1.0.2 \
-  --xcodebuild-arguments -scheme,LaunchGate \
+  --build-tool-arguments -workspace,LaunchGate.xcworkspace,-scheme,LaunchGate \
   --module LaunchGate \
   --output docs
 
