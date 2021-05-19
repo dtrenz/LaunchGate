@@ -102,7 +102,7 @@ public class LaunchGate {
     func shouldShowOptionalUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
         guard updateConfig.isNotRemembered() else { return false }
 
-        return appVersion < updateConfig.version
+        return appVersion.compare(updateConfig.version, options: .numeric) == .orderedAscending
     }
 
     /**
@@ -113,7 +113,7 @@ public class LaunchGate {
      - Returns: `true`, if a required update dialog should be displayed; `false`, if not.
      */
     func shouldShowRequiredUpdateDialog(_ updateConfig: UpdateConfiguration, appVersion: String) -> Bool {
-        appVersion < updateConfig.version
+        appVersion.compare(updateConfig.version, options: .numeric) == .orderedAscending
     }
 
     func currentAppVersion() -> String? {
