@@ -1,5 +1,9 @@
 import Foundation
 
+#if os(iOS)
+import UIKit
+#endif
+
 protocol Dialogable {
     var message: String { get }
 }
@@ -15,6 +19,7 @@ class DialogManager {
     }
 
     func displayAlertDialog(_ alertConfig: RememberableDialogSubject, blocking: Bool) {
+#if os(iOS)
         let dialog = createAlertController(.alert(blocking: blocking), message: alertConfig.message)
 
         displayAlertController(dialog) { () -> Void in
@@ -22,24 +27,30 @@ class DialogManager {
 
             Memory.remember(alertConfig)
         }
+#endif
     }
 
     func displayRequiredUpdateDialog(_ updateConfig: Dialogable, updateURL: URL) {
+#if os(iOS)
         let dialog = createAlertController(.requiredUpdate(updateURL: updateURL), message: updateConfig.message)
 
         displayAlertController(dialog, completion: nil)
+#endif
     }
 
     func displayOptionalUpdateDialog(_ updateConfig: RememberableDialogSubject, updateURL: URL) {
+#if os(iOS)
         let dialog = createAlertController(.optionalUpdate(updateURL: updateURL), message: updateConfig.message)
 
         displayAlertController(dialog) { () -> Void in
             Memory.remember(updateConfig)
         }
+#endif
     }
 
     // MARK: Custom Alert Controllers
 
+#if os(iOS)
     func createAlertController(_ type: DialogType, message: String) -> UIAlertController {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
 
@@ -101,5 +112,7 @@ class DialogManager {
 
         return UIAlertAction(title: alertTitle, style: .default, handler: updateHandler)
     }
+
+#endif
 
 }
